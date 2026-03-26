@@ -118,6 +118,7 @@ export default function Nav() {
           <motion.span animate={{ opacity: open ? 0 : 1 }} style={{ display: 'block', width: '22px', height: '1.5px', background: 'var(--color-red)' }} />
           <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -6.5 : 0 }} style={{ display: 'block', width: '22px', height: '1.5px', background: 'var(--color-red)', transformOrigin: 'center' }} />
         </button>
+        </div>
       </motion.nav>
 
       {/* Mobile menu */}
