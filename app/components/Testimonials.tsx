@@ -105,7 +105,7 @@ export default function Testimonials() {
               }}>
 
               {/* Quote icon placeholder — replace with custom SVG */}
-              <img src="/assets/dc-eisagogika.svg" alt="" style={{ height: '44px', width: 'auto', display: 'block', marginBottom: '24px', filter: 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(1234%) hue-rotate(353deg) brightness(95%) contrast(110%)' }} />
+              <img src="/assets/dc-eisagogika.svg" alt="" style={{ height: '30px', width: 'auto', display: 'block', marginBottom: '20px', filter: 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(1234%) hue-rotate(353deg) brightness(95%) contrast(110%)', alignSelf: 'flex-start' }} />
 
               <p style={{
                 fontSize: 'clamp(16px, 2vw, 22px)', color: 'var(--color-light)',
