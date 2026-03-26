@@ -113,6 +113,15 @@ export default function Nav() {
               padding: 'clamp(24px, 6vw, 48px)',
             }}>
 
+            {/* Brandmark top-left */}
+            <div style={{ position: 'absolute', top: '17px', left: 'clamp(24px, 6vw, 48px)' }}>
+              <img
+                src="/assets/dc-brandmark.svg"
+                alt="DC Drive"
+                style={{ height: '36px', width: 'auto', filter: 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(1234%) hue-rotate(353deg) brightness(95%) contrast(110%)' }}
+              />
+            </div>
+
             {/* X button */}
             <button
               onClick={() => setOpen(false)}
