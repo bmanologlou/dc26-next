@@ -47,7 +47,7 @@ export default function Hero() {
             marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px',
           }}>
           <span style={{ width: '24px', height: '1px', background: 'var(--color-red-dark)', display: 'inline-block' }} />
-          Σχολή Οδηγών · Αθήνα · Από το 1979
+          Learn Smart, Drive Safe
         </motion.div>
 
         <div style={{ overflow: 'hidden', marginBottom: '4px' }}>
