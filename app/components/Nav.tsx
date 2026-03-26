@@ -67,14 +67,16 @@ export default function Nav() {
 
         {/* Mobile right side — CTA + Burger */}
         <div className="mobile-nav" style={{ display: 'none', alignItems: 'center', gap: '10px' }}>
-          <a href="#contact" style={{
-            fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em',
-            textTransform: 'uppercase', color: '#f7f7f8',
-            background: '#ff4212', padding: '8px 14px',
-            borderRadius: '4px', textDecoration: 'none', whiteSpace: 'nowrap',
-          }}>
-            Ραντεβού
-          </a>
+          {!open && (
+            <a href="#contact" style={{
+              fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em',
+              textTransform: 'uppercase', color: '#f7f7f8',
+              background: '#ff4212', padding: '8px 14px',
+              borderRadius: '4px', textDecoration: 'none', whiteSpace: 'nowrap',
+            }}>
+              Ραντεβού
+            </a>
+          )}
           <button
             onClick={() => setOpen(v => !v)}
             aria-label={open ? 'Κλείσιμο μενού' : 'Άνοιγμα μενού'}
