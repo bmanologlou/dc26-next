@@ -21,7 +21,7 @@ export default function NavLogo({ scrolled }: { scrolled: boolean }) {
         alt="DC Christothanopoulou"
         animate={{ opacity: scrolled ? 0 : 1 }}
         transition={{ duration: 0.35, ease: [0, 0, 0.2, 1] }}
-        style={{ height: '22px', width: 'auto', filter: RED, flexShrink: 0 }}
+        style={{ height: '30px', width: 'auto', filter: RED, flexShrink: 0 }}
       />
     </a>
   )
