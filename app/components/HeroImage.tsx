@@ -19,6 +19,7 @@ export default function HeroImage() {
           maxWidth: '1440px', margin: '0 auto',
           borderRadius: '12px', overflow: 'hidden',
           aspectRatio: '16/7',
+          minHeight: 'clamp(260px, 40vw, 520px)',
           background: 'var(--color-dark-elevated)',
           border: '1px solid var(--color-border)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
