@@ -100,6 +100,8 @@ export default function Testimonials() {
                 border: '1px solid var(--color-border)',
                 borderRadius: '10px', padding: 'clamp(28px, 4vw, 48px)',
                 userSelect: 'none', cursor: 'grab',
+                minHeight: '280px',
+                display: 'flex', flexDirection: 'column',
               }}>
 
               {/* Quote icon placeholder — replace with custom SVG */}
@@ -110,7 +112,7 @@ export default function Testimonials() {
               <p style={{
                 fontSize: 'clamp(16px, 2vw, 22px)', color: 'var(--color-light)',
                 lineHeight: 1.7, marginBottom: '32px', fontWeight: 500,
-                maxWidth: '800px',
+                maxWidth: '800px', flex: 1,
               }}>
                 {testimonials[current].text}
               </p>
