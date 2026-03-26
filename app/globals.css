@@ -25,3 +25,140 @@ body {
   overflow-x: hidden;
 }
 ::selection { background: var(--color-red); color: var(--color-light); }
+
+
+/* ============================================================
+   TYPOGRAPHY SYSTEM
+   ============================================================ */
+
+/* Display — Hero headline */
+.t-display {
+  font-size: clamp(48px, 8.5vw, 104px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--color-light);
+}
+
+/* H1 — Page titles */
+.t-h1 {
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--color-light);
+}
+
+/* H2 — Section headings */
+.t-h2 {
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-red);
+}
+
+/* H3 — Card titles, sub-headings */
+.t-h3 {
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-light);
+}
+
+/* H4 — Small headings */
+.t-h4 {
+  font-size: clamp(15px, 2vw, 18px);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-light);
+}
+
+/* Eyebrow — section labels */
+.t-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-red-dark);
+}
+
+/* Body large — lead paragraphs */
+.t-body-lg {
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-muted);
+}
+
+/* Body — standard text */
+.t-body {
+  font-size: clamp(13px, 1.5vw, 15px);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+/* Body small — meta, descriptions */
+.t-body-sm {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+/* Caption — small labels */
+.t-caption {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-subtle);
+}
+
+/* Label — form labels, nav */
+.t-label {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Stat number */
+.t-stat {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-red-dark);
+}
+
+/* Color utilities */
+.t-red      { color: var(--color-red) !important; }
+.t-red-dark { color: var(--color-red-dark) !important; }
+.t-light    { color: var(--color-light) !important; }
+.t-muted    { color: var(--color-muted) !important; }
+.t-subtle   { color: var(--color-subtle) !important; }
+
+/* Eyebrow with line */
+.t-eyebrow-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-red-dark);
+}
+.t-eyebrow-line::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--color-red-dark);
+  flex-shrink: 0;
+}
