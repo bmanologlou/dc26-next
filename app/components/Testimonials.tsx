@@ -47,69 +47,6 @@ export default function Testimonials() {
             justifyContent: 'space-between', marginBottom: '48px', gap: '24px',
           }}>
           <div>
-            <div style={{
-              fontSize: '10px', fontWeight: 600, letterSpacing: '0.16em',
-              textTransform: 'uppercase', color: 'var(--color-red-dark)',
-              marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px',
-            }}>
-              <span style={{ width: '24px', height: '1px', background: 'var(--color-red-dark)', display: 'inline-block' }} />
-              Μαθητές
-            </div>
-            <h2 style={{
-              fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 800,
-              letterSpacing: '-0.02em', color: 'var(--color-red)', lineHeight: 1.1,
-            }}>
-              Τι λένε οι μαθητές μας
-            </h2>
-          </div>
-
-          {/* Desktop-only arrows */}
-          <div className="desktop-arrows" style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
-            {[{ fn: prev, label: '←' }, { fn: next, label: '→' }].map(({ fn, label }) => (
-              <button key={label} onClick={fn} style={{
-                width: '44px', height: '44px', borderRadius: '50%',
-                border: '1px solid var(--color-border)',
-                background: 'none', cursor: 'pointer',
-                color: 'var(--color-light)', fontSize: '16px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                transition: 'border-color 200ms, color 200ms',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--color-red)'; e.currentTarget.style.color = 'var(--color-red)' }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-border)'; e.currentTarget.style.color = 'var(--color-light)' }}>
-                {label}
-              </button>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Slider — swipeable */}
-        <div style={{ position: 'relative', overflow: 'hidden', cursor: 'grab' }}>
-          <AnimatePresence mode="wait" custom={dir}>
-            <motion.div
-              key={current}
-              custom={dir}
-              initial={{ opacity: 0, x: dir * 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: dir * -50 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.1}
-              onDragEnd={(_, info) => {
-                if (info.offset.x < -50) next()
-                else if (info.offset.x > 50) prev()
-              }}
-              style={{
-                border: '1px solid var(--color-border)',
-                borderRadius: '10px', padding: 'clamp(28px, 4vw, 48px)',
-                userSelect: 'none',
-              }}>
-              <div style={{
-                fontSize: 'clamp(40px, 5vw, 56px)', color: 'var(--color-red)',
-                lineHeight: 1, marginBottom: '20px', opacity: 0.4,
-              }}>
-                "
-              </div>
               <p style={{
                 fontSize: 'clamp(16px, 2vw, 22px)', color: 'var(--color-light)',
                 lineHeight: 1.7, marginBottom: '32px', fontWeight: 500,
