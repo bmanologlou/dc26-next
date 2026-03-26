@@ -16,13 +16,13 @@ const Section = ({ title, children }: { title: string, children: React.ReactNode
   </div>
 )
 
-const Row = ({ label, spec, children }: { label: string, spec?: string, children: React.ReactNode }) => (
+const Row = ({ label, spec, usage, children }: { label: string, spec?: string, usage?: string, children: React.ReactNode }) => (
   <div>
-    <div style={{ display: 'flex', gap: '12px', alignItems: 'baseline', marginBottom: '12px' }}>
+    <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap' }}>
       <code style={{
         fontSize: '13px', fontFamily: 'monospace',
         color: '#ff4212', background: 'rgba(255,66,18,0.1)',
-        padding: '3px 8px', borderRadius: '4px',
+        padding: '3px 8px', borderRadius: '4px', flexShrink: 0,
       }}>
         .{label}
       </code>
@@ -31,8 +31,18 @@ const Row = ({ label, spec, children }: { label: string, spec?: string, children
           {spec}
         </span>
       )}
+      {usage && (
+        <span style={{
+          fontSize: '10px', color: '#c43010',
+          background: 'rgba(196,48,16,0.12)',
+          padding: '2px 8px', borderRadius: '4px',
+          letterSpacing: '0.04em', flexShrink: 0,
+        }}>
+          {usage}
+        </span>
+      )}
     </div>
-    <div style={{ paddingLeft: '0' }}>{children}</div>
+    <div>{children}</div>
   </div>
 )
 
@@ -56,35 +66,35 @@ export default function Typography() {
 
         {/* HEADINGS */}
         <Section title="Headings">
-          <Row label="t-display" spec="clamp(48px→104px) · weight 900 · tracking -0.03em">
+          <Row label="t-display" spec="clamp(48px→104px) · weight 900 · tracking -0.03em" usage="Hero — h1 line 2">
             <p className="t-display" style={{ margin: 0 }}>Μάθε να οδηγείς.</p>
           </Row>
-          <Row label="t-h1" spec="clamp(40px→80px) · weight 900 · tracking -0.025em">
+          <Row label="t-h1" spec="clamp(40px→80px) · weight 900 · tracking -0.025em" usage="Hero — h1 line 1">
             <p className="t-h1" style={{ margin: 0 }}>Μάθε να οδηγείς.</p>
           </Row>
-          <Row label="t-h2" spec="clamp(28px→52px) · weight 800 · tracking -0.02em · color: red">
+          <Row label="t-h2" spec="clamp(28px→52px) · weight 800 · tracking -0.02em · color: red" usage="Section headings — Διπλώματα, Πώς ξεκινάς, Γιατί DC Drive...">
             <p className="t-h2" style={{ margin: 0 }}>Τι δίπλωμα θέλεις;</p>
           </Row>
-          <Row label="t-h3" spec="clamp(18px→24px) · weight 700 · tracking -0.01em">
+          <Row label="t-h3" spec="clamp(18px→24px) · weight 700 · tracking -0.01em" usage="Card titles — Αυτοκίνητο, Μοτοσυκλέτα, Επαγγελματικά">
             <p className="t-h3" style={{ margin: 0 }}>Κατηγορία Β — Αυτοκίνητο</p>
           </Row>
-          <Row label="t-h4" spec="clamp(15px→18px) · weight 700">
+          <Row label="t-h4" spec="clamp(15px→18px) · weight 700" usage="Why Us features — Εμπειρία, Επιτυχία, Ευελιξία">
             <p className="t-h4" style={{ margin: 0 }}>Εμπειρία από το 1979</p>
           </Row>
         </Section>
 
         {/* LABELS */}
         <Section title="Labels & Eyebrows">
-          <Row label="t-eyebrow" spec="10px · weight 600 · tracking 0.16em · uppercase · color: red-dark">
+          <Row label="t-eyebrow" spec="10px · weight 600 · tracking 0.16em · uppercase · color: red-dark" usage="Hero eyebrow — Learn Smart Drive Safe">
             <p className="t-eyebrow" style={{ margin: 0 }}>Σχολή Οδηγών · Αθήνα</p>
           </Row>
-          <Row label="t-eyebrow-line" spec="10px · με γραμμή αριστερά">
+          <Row label="t-eyebrow-line" spec="10px · με γραμμή αριστερά" usage="Section labels — Κατηγορίες, Η Διαδικασία, Γιατί εμείς, Μαθητές">
             <p className="t-eyebrow-line" style={{ margin: 0 }}>Κατηγορίες</p>
           </Row>
-          <Row label="t-label" spec="10px · weight 600 · tracking 0.1em · uppercase — για φόρμες, nav">
+          <Row label="t-label" spec="10px · weight 600 · tracking 0.1em · uppercase — για φόρμες, nav" usage="Form labels — Όνομα, Τηλέφωνο, Κατηγορία">
             <p className="t-label" style={{ margin: 0 }}>Τηλέφωνο επικοινωνίας</p>
           </Row>
-          <Row label="t-stat" spec="clamp(32px→48px) · weight 900 · color: red-dark — για στατιστικά">
+          <Row label="t-stat" spec="clamp(32px→48px) · weight 900 · color: red-dark — για στατιστικά" usage="Stats bar — 1979, 85%, 2k+, 6">
             <div style={{ display: 'flex', gap: '48px', flexWrap: 'wrap' }}>
               {['1979', '85%', '2k+', '6'].map(n => (
                 <div key={n}>
@@ -98,23 +108,23 @@ export default function Typography() {
 
         {/* BODY */}
         <Section title="Body Text">
-          <Row label="t-body-lg" spec="clamp(15px→18px) · weight 400 · line-height 1.75 — lead paragraphs">
+          <Row label="t-body-lg" spec="clamp(15px→18px) · weight 400 · line-height 1.75 — lead paragraphs" usage="Hero subtitle, Dimitra text, CTA description">
             <p className="t-body-lg" style={{ margin: 0 }}>Σύγχρονη εκπαίδευση με έμφαση στην ασφάλεια, την ψυχραιμία και την αυτοπεποίθηση. Είμαστε δίπλα σου σε κάθε βήμα της διαδρομής.</p>
           </Row>
-          <Row label="t-body" spec="clamp(13px→15px) · weight 400 · line-height 1.7 — standard text">
+          <Row label="t-body" spec="clamp(13px→15px) · weight 400 · line-height 1.7 — standard text" usage="Steps description, Why Us description, Testimonials">
             <p className="t-body" style={{ margin: 0 }}>Η σχολή ιδρύθηκε το 1979 από τον πατέρα μου, Δημήτρη Χρηστοθανόπουλο. Συνεχίζω την ίδια παράδοση με σύγχρονη προσέγγιση, τον ίδιο σεβασμό στον μαθητή και την ίδια αγάπη για τη δουλειά.</p>
           </Row>
-          <Row label="t-body-sm" spec="13px · weight 400 · line-height 1.65 — card descriptions">
+          <Row label="t-body-sm" spec="13px · weight 400 · line-height 1.65 — card descriptions" usage="Category cards, extra services cards, footer tagline">
             <p className="t-body-sm" style={{ margin: 0 }}>Η πιο δημοφιλής επιλογή για νέους οδηγούς. Ξεκίνα σήμερα και πάρε το δίπλωμά σου γρήγορα.</p>
           </Row>
-          <Row label="t-caption" spec="11px · weight 500 · color: subtle — meta, footer">
+          <Row label="t-caption" spec="11px · weight 500 · color: subtle — meta, footer" usage="Stats labels, footer copyright, Eternal Optimists credit">
             <p className="t-caption" style={{ margin: 0 }}>© 2026 DC Drive — Dimitra Christothanopoulou · Σχεδιασμός: Eternal Optimists</p>
           </Row>
         </Section>
 
         {/* BUTTONS */}
         <Section title="Buttons">
-          <Row label="btn-primary" spec="bg: red · text: white · padding 14px 28px · radius 4px · weight 700 · uppercase · tracking 0.1em">
+          <Row label="btn-primary" spec="bg: red · text: white · padding 14px 28px · radius 4px · weight 700 · uppercase · tracking 0.1em" usage="Hero CTA, Nav CTA, CTA Banner, Contact form submit">
             <a href="#" style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
               background: '#ff4212', color: '#f7f7f8',
@@ -125,7 +135,7 @@ export default function Typography() {
               Κλείσε ραντεβού →
             </a>
           </Row>
-          <Row label="btn-ghost" spec="bg: transparent · border: rgba white 0.12 · padding 14px 28px">
+          <Row label="btn-ghost" spec="bg: transparent · border: rgba white 0.12 · padding 14px 28px" usage="Hero secondary CTA, CTA Banner secondary">
             <a href="#" style={{
               display: 'inline-flex', alignItems: 'center',
               background: 'transparent', color: 'rgba(247,247,248,0.5)',
@@ -137,7 +147,7 @@ export default function Typography() {
               Δες τις κατηγορίες
             </a>
           </Row>
-          <Row label="btn-sm" spec="mobile CTA — padding 8px 14px · font 10px">
+          <Row label="btn-sm" spec="mobile CTA — padding 8px 14px · font 10px" usage="Mobile nav — Ραντεβού button">
             <a href="#" style={{
               display: 'inline-flex',
               background: '#ff4212', color: '#f7f7f8',
@@ -152,14 +162,14 @@ export default function Typography() {
 
         {/* NAV */}
         <Section title="Navigation">
-          <Row label="nav-link" spec="11px · weight 500 · tracking 0.1em · uppercase · color: muted → light on hover">
+          <Row label="nav-link" spec="11px · weight 500 · tracking 0.1em · uppercase · color: muted → light on hover" usage="Desktop nav links">
             <div style={{ display: 'flex', gap: '32px', flexWrap: 'wrap' }}>
               {['Πώς ξεκινάς', 'Διπλώματα', 'Σχολή', 'FAQ', 'Επικοινωνία'].map(l => (
                 <span key={l} style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(247,247,248,0.5)' }}>{l}</span>
               ))}
             </div>
           </Row>
-          <Row label="nav-mobile-link" spec="clamp(32px→52px) · weight 800 · tracking -0.02em — fullscreen menu">
+          <Row label="nav-mobile-link" spec="clamp(32px→52px) · weight 800 · tracking -0.02em — fullscreen menu" usage="Mobile fullscreen menu links">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               {['Πώς ξεκινάς', 'Διπλώματα'].map(l => (
                 <span key={l} style={{ fontSize: 'clamp(32px, 6vw, 52px)', fontWeight: 800, letterSpacing: '-0.02em', color: '#f7f7f8', lineHeight: 1.15 }}>{l}</span>
@@ -170,7 +180,7 @@ export default function Typography() {
 
         {/* FORM */}
         <Section title="Form Elements">
-          <Row label="form-label" spec="10px · weight 600 · tracking 0.1em · uppercase · color: muted">
+          <Row label="form-label" spec="10px · weight 600 · tracking 0.1em · uppercase · color: muted" usage="Contact form — Όνομα, Τηλέφωνο, Κατηγορία, Μήνυμα">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxWidth: '400px' }}>
               <label style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(247,247,248,0.5)' }}>
                 Τηλέφωνο
@@ -182,7 +192,7 @@ export default function Typography() {
               }} />
             </div>
           </Row>
-          <Row label="form-select" spec="ίδιο με input">
+          <Row label="form-select" spec="ίδιο με input" usage="Contact form — dropdown κατηγορίας">
             <select style={{
               width: '100%', maxWidth: '400px', padding: '12px 16px',
               background: '#1a1a20', border: '1px solid rgba(255,255,255,0.07)',
@@ -192,7 +202,7 @@ export default function Typography() {
               <option>Κατηγορία Α</option>
             </select>
           </Row>
-          <Row label="form-textarea" spec="ίδιο με input · min-height 120px">
+          <Row label="form-textarea" spec="ίδιο με input · min-height 120px" usage="Contact form — πεδίο μηνύματος">
             <textarea placeholder="Μήνυμα..." rows={3} style={{
               width: '100%', maxWidth: '400px', padding: '12px 16px',
               background: '#1a1a20', border: '1px solid rgba(255,255,255,0.07)',
@@ -204,24 +214,24 @@ export default function Typography() {
 
         {/* FOOTER */}
         <Section title="Footer">
-          <Row label="footer-heading" spec="10px · weight 600 · tracking 0.12em · uppercase · color: red-dark">
+          <Row label="footer-heading" spec="10px · weight 600 · tracking 0.12em · uppercase · color: red-dark" usage="Footer column titles — Διπλώματα, Σχολή">
             <p style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#c43010', margin: 0 }}>
               Διπλώματα
             </p>
           </Row>
-          <Row label="footer-link" spec="13px · weight 400 · color: muted → light on hover">
+          <Row label="footer-link" spec="13px · weight 400 · color: muted → light on hover" usage="Footer navigation links">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {['Αυτοκίνητο', 'Μοτοσυκλέτα', 'Επαγγελματικά'].map(l => (
                 <span key={l} style={{ fontSize: '13px', color: 'rgba(247,247,248,0.45)' }}>{l}</span>
               ))}
             </div>
           </Row>
-          <Row label="footer-tagline" spec="13px · color: muted · line-height 1.6">
+          <Row label="footer-tagline" spec="13px · color: muted · line-height 1.6" usage="Footer — Learn Smart Drive Safe tagline">
             <p style={{ fontSize: '13px', color: 'rgba(247,247,248,0.45)', lineHeight: 1.6, margin: 0 }}>
               Learn Smart, Drive Safe.<br />Σχολή Οδηγών στην Αθήνα από το 1979.
             </p>
           </Row>
-          <Row label="footer-copyright" spec="12px · color: subtle">
+          <Row label="footer-copyright" spec="12px · color: subtle" usage="Footer bottom bar — © 2026 DC Drive, Eternal Optimists">
             <p style={{ fontSize: '12px', color: 'rgba(247,247,248,0.22)', margin: 0 }}>
               © 2026 DC Drive — Dimitra Christothanopoulou
             </p>
