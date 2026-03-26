@@ -35,7 +35,7 @@ export default function CtaBanner() {
             Επικοινώνησε μαζί μας σήμερα και κλείσε το πρώτο σου μάθημα.
           </p>
         </div>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', flexShrink: 0 }}>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', flexShrink: 0, width: '100%' }} className='cta-btns'>
           <motion.a href="#contact"
             whileHover={{ y: -2, backgroundColor: 'var(--color-red-dark)' }}
             whileTap={{ scale: 0.97 }}
@@ -62,6 +62,11 @@ export default function CtaBanner() {
           </motion.a>
         </div>
       </motion.div>
+      <style>{`
+        @media (max-width: 600px) {
+          .cta-btns a { width: 100% !important; justify-content: center; text-align: center; box-sizing: border-box; }
+        }
+      `}</style>
     </section>
   )
 }
