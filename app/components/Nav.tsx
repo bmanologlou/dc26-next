@@ -33,10 +33,10 @@ export default function Nav() {
           padding: '0 clamp(24px, 5vw, 80px)',
           height: '72px',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          background: scrolled ? 'rgba(32,32,39,0.92)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(16px)' : 'none',
+          background: scrolled ? 'var(--color-dark)' : 'transparent',
+          backdropFilter: 'none',
           borderBottom: scrolled ? '1px solid var(--color-border)' : 'none',
-          transition: 'background 300ms ease, border 300ms ease, backdrop-filter 300ms ease',
+          transition: 'background 400ms ease, border 400ms ease',
         }}>
 
         {/* Logo — switches between full logo and brandmark */}
@@ -51,7 +51,7 @@ export default function Nav() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -6 }}
                 transition={{ duration: 0.25, ease: [0, 0, 0.2, 1] }}
-                style={{ height: '34px', width: 'auto', filter: 'invert(1)', position: 'absolute' }}
+                style={{ height: '42px', width: 'auto', filter: 'invert(1) sepia(1) saturate(5) hue-rotate(310deg)', position: 'absolute' }}
               />
             ) : (
               <motion.img
@@ -62,18 +62,18 @@ export default function Nav() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.85 }}
                 transition={{ duration: 0.25, ease: [0, 0, 0.2, 1] }}
-                style={{ height: '32px', width: 'auto', filter: 'invert(1)', position: 'absolute' }}
+                style={{ height: '38px', width: 'auto', filter: 'invert(1) sepia(1) saturate(5) hue-rotate(310deg)', position: 'absolute' }}
               />
             )}
           </AnimatePresence>
           {/* Spacer to maintain layout width */}
-          <span style={{ display: 'inline-block', height: '34px', width: showBrandmark ? '32px' : '220px', transition: 'width 300ms ease' }} />
+          <span style={{ display: 'inline-block', height: '34px', width: showBrandmark ? '38px' : '240px', transition: 'width 300ms ease' }} />
         </a>
 
         {/* Desktop links */}
         <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }} className="desktop-nav">
-          {['Πώς ξεκινάς', 'Διπλώματα', 'Σχολή', 'Επικοινωνία'].map(link => (
-            <a key={link} href={link === 'Πώς ξεκινάς' ? '#steps' : link === 'Διπλώματα' ? '#categories' : `#${link.toLowerCase()}`} style={{
+          {['Πώς ξεκινάς', 'Διπλώματα', 'Σχολή', 'FAQ', 'Επικοινωνία'].map(link => (
+            <a key={link} href={link === 'Πώς ξεκινάς' ? '#steps' : link === 'Διπλώματα' ? '#categories' : link === 'FAQ' ? '#faq' : `#${link.toLowerCase()}`} style={{
               fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em',
               textTransform: 'uppercase', color: 'var(--color-muted)',
               textDecoration: 'none', transition: 'color 200ms ease',
@@ -125,12 +125,12 @@ export default function Nav() {
               padding: '24px clamp(24px, 5vw, 80px)',
               display: 'flex', flexDirection: 'column', gap: '20px',
             }}>
-            {['Πώς ξεκινάς', 'Διπλώματα', 'Σχολή', 'Επικοινωνία'].map((link, i) => (
+            {['Πώς ξεκινάς', 'Διπλώματα', 'Σχολή', 'FAQ', 'Επικοινωνία'].map((link, i) => (
               <motion.a key={link}
                 initial={{ opacity: 0, x: -8 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.06 }}
-                href={link === 'Πώς ξεκινάς' ? '#steps' : link === 'Διπλώματα' ? '#categories' : `#${link.toLowerCase()}`}
+                href={link === 'Πώς ξεκινάς' ? '#steps' : link === 'Διπλώματα' ? '#categories' : link === 'FAQ' ? '#faq' : `#${link.toLowerCase()}`}
                 onClick={() => setOpen(false)}
                 style={{
                   fontSize: '14px', fontWeight: 500, letterSpacing: '0.08em',
