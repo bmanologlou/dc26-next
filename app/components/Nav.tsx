@@ -49,6 +49,7 @@ export default function Nav() {
           padding: '0 clamp(24px, 5vw, 80px)',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           background: 'linear-gradient(to bottom, rgba(32,32,39,0.96) 0%, rgba(32,32,39,0.6) 70%, transparent 100%)',
+          willChange: 'transform',
         }}>
 
         <NavLogo isMobile={isMobile} />

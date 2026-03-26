@@ -11,13 +11,13 @@ export default function NavLogo({ isMobile }: { isMobile: boolean }) {
       <img
         src="/assets/dc-brandmark.svg"
         alt="DC Drive"
-        style={{ height: '38px', width: 'auto', filter: RED, flexShrink: 0 }}
+        style={{ height: '38px', width: '38px', filter: RED, flexShrink: 0 }}
       />
       {!isMobile && (
         <img
           src="/assets/dc-wordmark.svg"
           alt="DC Christothanopoulou"
-          style={{ height: '38px', width: 'auto', filter: RED, flexShrink: 0 }}
+          style={{ height: '38px', width: '38px', filter: RED, flexShrink: 0 }}
         />
       )}
     </a>
