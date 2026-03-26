@@ -72,8 +72,8 @@ export default function Nav() {
 
         {/* Desktop links */}
         <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }} className="desktop-nav">
-          {['Κατηγορίες', 'Σχολή', 'Επικοινωνία'].map(link => (
-            <a key={link} href={`#${link.toLowerCase()}`} style={{
+          {['Πώς ξεκινάς', 'Διπλώματα', 'Σχολή', 'Επικοινωνία'].map(link => (
+            <a key={link} href={link === 'Πώς ξεκινάς' ? '#steps' : link === 'Διπλώματα' ? '#categories' : `#${link.toLowerCase()}`} style={{
               fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em',
               textTransform: 'uppercase', color: 'var(--color-muted)',
               textDecoration: 'none', transition: 'color 200ms ease',
@@ -125,12 +125,12 @@ export default function Nav() {
               padding: '24px clamp(24px, 5vw, 80px)',
               display: 'flex', flexDirection: 'column', gap: '20px',
             }}>
-            {['Κατηγορίες', 'Σχολή', 'Επικοινωνία'].map((link, i) => (
+            {['Πώς ξεκινάς', 'Διπλώματα', 'Σχολή', 'Επικοινωνία'].map((link, i) => (
               <motion.a key={link}
                 initial={{ opacity: 0, x: -8 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.06 }}
-                href={`#${link.toLowerCase()}`}
+                href={link === 'Πώς ξεκινάς' ? '#steps' : link === 'Διπλώματα' ? '#categories' : `#${link.toLowerCase()}`}
                 onClick={() => setOpen(false)}
                 style={{
                   fontSize: '14px', fontWeight: 500, letterSpacing: '0.08em',

@@ -1,7 +1,9 @@
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Stats from './components/Stats'
+import Steps from './components/Steps'
 import Categories from './components/Categories'
+import Dimitra from './components/Dimitra'
 
 export const metadata = {
   title: 'DC Drive — Σχολή Οδηγών Αθήνα',
@@ -14,7 +16,9 @@ export default function Home() {
       <Nav />
       <Hero />
       <Stats />
+      <Steps />
       <Categories />
+      <Dimitra />
     </main>
   )
 }
