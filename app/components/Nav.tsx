@@ -33,12 +33,10 @@ export default function Nav() {
           padding: '0 clamp(24px, 5vw, 80px)',
           height: '72px',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          background: scrolled 
-            ? 'linear-gradient(to bottom, rgba(32,32,39,1) 0%, rgba(32,32,39,0.98) 70%, rgba(32,32,39,0.85) 100%)'
-            : 'linear-gradient(to bottom, rgba(32,32,39,0.7) 0%, rgba(32,32,39,0.3) 60%, transparent 100%)',
+          background: 'linear-gradient(to bottom, rgba(32,32,39,0.82) 0%, rgba(32,32,39,0.4) 65%, transparent 100%)',
           backdropFilter: 'none',
           borderBottom: 'none',
-          transition: 'background 400ms ease',
+          transition: 'none',
         }}>
 
         {/* Logo — switches between full logo and brandmark */}
@@ -53,7 +51,7 @@ export default function Nav() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -6 }}
                 transition={{ duration: 0.25, ease: [0, 0, 0.2, 1] }}
-                style={{ height: '42px', width: 'auto', filter: 'invert(1) sepia(1) saturate(5) hue-rotate(310deg)', position: 'absolute' }}
+                style={{ height: '42px', width: 'auto', filter: 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(1234%) hue-rotate(353deg) brightness(95%) contrast(110%)', position: 'absolute' }}
               />
             ) : (
               <motion.img
@@ -64,7 +62,7 @@ export default function Nav() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.85 }}
                 transition={{ duration: 0.25, ease: [0, 0, 0.2, 1] }}
-                style={{ height: '38px', width: 'auto', filter: 'invert(1) sepia(1) saturate(5) hue-rotate(310deg)', position: 'absolute' }}
+                style={{ height: '38px', width: 'auto', filter: 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(1234%) hue-rotate(353deg) brightness(95%) contrast(110%)', position: 'absolute' }}
               />
             )}
           </AnimatePresence>
