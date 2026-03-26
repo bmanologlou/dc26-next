@@ -11,185 +11,183 @@ const LINKS = [
   { label: 'Επικοινωνία', href: '#contact' },
 ]
 
+const RED_FILTER = 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(1234%) hue-rotate(353deg) brightness(95%) contrast(110%)'
+
 export default function Nav() {
   const [open, setOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
 
+  // Lock scroll when menu open — no padding compensation
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
-
-  useEffect(() => {
-    document.documentElement.style.overflow = open ? 'hidden' : ''
+    if (open) {
+      document.documentElement.style.overflow = 'hidden'
+    } else {
+      document.documentElement.style.overflow = ''
+    }
     return () => { document.documentElement.style.overflow = '' }
   }, [open])
 
   return (
     <>
-      <motion.nav
-        initial={{ opacity: 0, y: -8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0, 0, 0.2, 1], delay: 0.1 }}
-        style={{
-          position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 100,
-          height: '72px',
-          padding: '0 clamp(24px, 5vw, 80px)',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          background: 'linear-gradient(to bottom, rgba(32,32,39,0.96) 0%, rgba(32,32,39,0.6) 70%, transparent 100%)',
-          willChange: 'transform',
-        }}>
+      {/* ── NAV BAR ─────────────────────────────── */}
+      <nav style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200,
+        height: '72px',
+        padding: '0 clamp(24px, 5vw, 80px)',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        background: 'linear-gradient(to bottom, rgba(32,32,39,0.96) 0%, rgba(32,32,39,0.55) 70%, transparent 100%)',
+      }}>
 
-        <NavLogo isMobile={isMobile} />
+        <NavLogo />
 
         {/* Desktop links */}
-        <div style={{ display: 'flex', gap: '28px', alignItems: 'center' }} className="desktop-nav">
+        <div className="desktop-nav" style={{ display: 'flex', gap: '28px', alignItems: 'center' }}>
           {LINKS.map(({ label, href }) => (
             <a key={label} href={href} style={{
               fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em',
-              textTransform: 'uppercase', color: 'var(--color-muted)',
-              textDecoration: 'none', transition: 'color 200ms ease',
+              textTransform: 'uppercase', color: 'rgba(247,247,248,0.5)',
+              textDecoration: 'none', transition: 'color 200ms',
             }}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-light)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-muted)')}>
+            onMouseEnter={e => (e.currentTarget.style.color = '#f7f7f8')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'rgba(247,247,248,0.5)')}>
               {label}
             </a>
           ))}
-          <motion.a href="#contact"
-            whileHover={{ y: -1, backgroundColor: 'var(--color-red-dark)' }}
-            whileTap={{ scale: 0.97 }}
-            style={{
-              fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em',
-              textTransform: 'uppercase', color: 'var(--color-light)',
-              background: 'var(--color-red)', padding: '10px 20px',
-              borderRadius: '4px', textDecoration: 'none',
-            }}>
+          <a href="#contact" style={{
+            fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em',
+            textTransform: 'uppercase', color: '#f7f7f8',
+            background: '#ff4212', padding: '10px 20px',
+            borderRadius: '4px', textDecoration: 'none',
+            transition: 'background 200ms',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.background = '#c43010')}
+          onMouseLeave={e => (e.currentTarget.style.background = '#ff4212')}>
             Κλείσε ραντεβού
-          </motion.a>
+          </a>
         </div>
 
-        {/* Mobile — CTA + Burger */}
-        <div className="mobile-actions" style={{ display: 'none', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
-          <a href="#contact" onClick={() => setOpen(false)} style={{
+        {/* Mobile right side — CTA + Burger */}
+        <div className="mobile-nav" style={{ display: 'none', alignItems: 'center', gap: '10px' }}>
+          <a href="#contact" style={{
             fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em',
-            textTransform: 'uppercase', color: 'var(--color-light)',
-            background: 'var(--color-red)', padding: '8px 14px',
-            borderRadius: '4px', textDecoration: 'none',
+            textTransform: 'uppercase', color: '#f7f7f8',
+            background: '#ff4212', padding: '8px 14px',
+            borderRadius: '4px', textDecoration: 'none', whiteSpace: 'nowrap',
           }}>
             Ραντεβού
           </a>
           <button
-            onClick={() => setOpen(prev => !prev)}
-            aria-label="Menu"
+            onClick={() => setOpen(v => !v)}
+            aria-label={open ? 'Κλείσιμο μενού' : 'Άνοιγμα μενού'}
             style={{
               background: 'none', border: 'none', cursor: 'pointer',
-              padding: '8px', display: 'flex', flexDirection: 'column',
-              gap: '5px', zIndex: 110, position: 'relative',
+              padding: '6px', flexShrink: 0,
+              display: 'flex', flexDirection: 'column', gap: '5px',
             }}>
-            <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 6.5 : 0 }}
-              style={{ display: 'block', width: '22px', height: '2px', background: 'var(--color-red)', transformOrigin: 'center', borderRadius: '2px' }} />
-            <motion.span animate={{ opacity: open ? 0 : 1 }}
-              style={{ display: 'block', width: '22px', height: '2px', background: 'var(--color-red)', borderRadius: '2px' }} />
-            <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -6.5 : 0 }}
-              style={{ display: 'block', width: '22px', height: '2px', background: 'var(--color-red)', transformOrigin: 'center', borderRadius: '2px' }} />
+            <span style={{
+              display: 'block', width: '22px', height: '2px',
+              background: '#ff4212', borderRadius: '2px',
+              transition: 'transform 250ms, opacity 250ms',
+              transform: open ? 'translateY(7px) rotate(45deg)' : 'none',
+            }} />
+            <span style={{
+              display: 'block', width: '22px', height: '2px',
+              background: '#ff4212', borderRadius: '2px',
+              transition: 'opacity 250ms',
+              opacity: open ? 0 : 1,
+            }} />
+            <span style={{
+              display: 'block', width: '22px', height: '2px',
+              background: '#ff4212', borderRadius: '2px',
+              transition: 'transform 250ms, opacity 250ms',
+              transform: open ? 'translateY(-7px) rotate(-45deg)' : 'none',
+            }} />
           </button>
         </div>
-      </motion.nav>
+      </nav>
 
-      {/* Fullscreen mobile menu */}
+      {/* ── FULLSCREEN MOBILE MENU ──────────────── */}
       <AnimatePresence>
         {open && (
           <motion.div
+            key="mobile-menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
             style={{
-              position: 'fixed', inset: 0, zIndex: 105,
-              background: 'var(--color-dark)',
+              position: 'fixed', inset: 0, zIndex: 190,
+              background: '#202027',
               display: 'flex', flexDirection: 'column',
-              justifyContent: 'center',
-              padding: 'clamp(24px, 6vw, 48px)',
-              paddingBottom: 'clamp(48px, 10vw, 80px)',
+              padding: '100px clamp(24px, 6vw, 48px) 60px',
+              overflowY: 'auto',
             }}>
-            {/* Bottom fade */}
-            <div style={{
-              position: 'absolute', bottom: 0, left: 0, right: 0,
-              height: '120px', pointerEvents: 'none',
-              background: 'linear-gradient(to top, var(--color-dark) 20%, transparent 100%)',
-            }} />
 
             {/* Brandmark top-left */}
-            <div style={{ position: 'absolute', top: '17px', left: 'clamp(24px, 6vw, 48px)' }}>
+            <div style={{ position: 'absolute', top: '16px', left: 'clamp(24px, 6vw, 48px)' }}>
               <img
                 src="/assets/dc-brandmark.svg"
                 alt="DC Drive"
-                style={{ height: '36px', width: 'auto', filter: 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(1234%) hue-rotate(353deg) brightness(95%) contrast(110%)' }}
+                style={{ height: '44px', width: 'auto', filter: RED_FILTER }}
               />
             </div>
 
-            {/* X button */}
-            <button
-              onClick={() => setOpen(false)}
-              style={{
-                position: 'absolute', top: '20px', right: '20px',
-                background: 'none', border: 'none', cursor: 'pointer',
-                color: 'var(--color-muted)', fontSize: '24px',
-                lineHeight: 1, zIndex: 106,
-              }}>
-              ✕
-            </button>
-
             {/* Links */}
-            <nav style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
               {LINKS.map(({ label, href }, i) => (
                 <motion.a
                   key={label}
                   href={href}
                   onClick={() => setOpen(false)}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 + i * 0.07, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.06, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   style={{
-                    fontSize: 'clamp(28px, 6vw, 48px)', fontWeight: 800,
-                    letterSpacing: '-0.02em', color: 'var(--color-light)',
-                    textDecoration: 'none', lineHeight: 1.2,
-                    padding: '12px 0',
-                    borderBottom: '1px solid var(--color-border)',
-                    transition: 'color 200ms ease',
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-red)')}
-                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-light)')}>
+                    fontSize: 'clamp(32px, 8vw, 52px)', fontWeight: 800,
+                    letterSpacing: '-0.02em', color: '#f7f7f8',
+                    textDecoration: 'none', lineHeight: 1.15,
+                    padding: '14px 0',
+                    borderBottom: '1px solid rgba(255,255,255,0.07)',
+                  }}>
                   {label}
                 </motion.a>
               ))}
-            </nav>
+            </div>
 
+            {/* CTA */}
             <motion.a
               href="#contact"
               onClick={() => setOpen(false)}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.4 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.35, duration: 0.3 }}
               style={{
-                marginTop: '40px', display: 'block', textAlign: 'center',
-                background: 'var(--color-red)', color: 'var(--color-light)',
-                padding: '16px 28px', borderRadius: '4px',
+                marginTop: '32px', display: 'block', textAlign: 'center',
+                background: '#ff4212', color: '#f7f7f8',
+                padding: '16px', borderRadius: '4px',
                 fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em',
                 textTransform: 'uppercase', textDecoration: 'none',
               }}>
               Κλείσε ραντεβού
             </motion.a>
+
+            {/* Bottom fade */}
+            <div style={{
+              position: 'absolute', bottom: 0, left: 0, right: 0, height: '80px',
+              background: 'linear-gradient(to top, #202027, transparent)',
+              pointerEvents: 'none',
+            }} />
           </motion.div>
         )}
       </AnimatePresence>
 
       <style>{`
+        @media (min-width: 769px) {
+          .desktop-nav { display: flex !important; }
+          .mobile-nav   { display: none !important; }
+        }
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
-          .mobile-actions { display: flex !important; }
+          .mobile-nav   { display: flex !important; }
         }
       `}</style>
     </>

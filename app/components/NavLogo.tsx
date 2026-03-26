@@ -2,24 +2,29 @@
 
 const RED = 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(1234%) hue-rotate(353deg) brightness(95%) contrast(110%)'
 
-export default function NavLogo({ isMobile }: { isMobile: boolean }) {
+export default function NavLogo() {
   return (
-    <a href="/" style={{ textDecoration: 'none', display: 'block', flexShrink: 0 }}>
-      {isMobile ? (
-        /* Mobile — brandmark only */
-        <img
-          src="/assets/dc-brandmark.svg"
-          alt="DC Drive"
-          style={{ height: '44px', width: 'auto', filter: RED, display: 'block' }}
-        />
-      ) : (
-        /* Desktop — full logotype (brandmark + text as one SVG) */
-        <img
-          src="/assets/dc-logotype.svg"
-          alt="DC Drive"
-          style={{ height: '52px', width: 'auto', filter: RED, display: 'block' }}
-        />
-      )}
+    <a href="/" style={{ textDecoration: 'none', flexShrink: 0, display: 'block' }}>
+      {/* Desktop logotype — hidden on mobile via CSS */}
+      <img
+        src="/assets/dc-logotype.svg"
+        alt="DC Drive"
+        className="logo-desktop"
+        style={{ height: '52px', width: 'auto', filter: RED, display: 'block' }}
+      />
+      {/* Mobile brandmark — hidden on desktop via CSS */}
+      <img
+        src="/assets/dc-brandmark.svg"
+        alt="DC Drive"
+        className="logo-mobile"
+        style={{ height: '44px', width: 'auto', filter: RED, display: 'none' }}
+      />
+      <style>{`
+        @media (max-width: 768px) {
+          .logo-desktop { display: none !important; }
+          .logo-mobile  { display: block !important; }
+        }
+      `}</style>
     </a>
   )
 }
