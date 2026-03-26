@@ -100,14 +100,23 @@ export default function Nav() {
           </motion.a>
         </div>
 
-        {/* Hamburger */}
-        <button onClick={() => setOpen(!open)} className="hamburger" style={{
+        {/* Mobile CTA + Hamburger */}
+        <div className="mobile-actions" style={{ display: 'none', alignItems: 'center', gap: '10px' }}>
+          <a href="#contact" style={{
+            fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em',
+            textTransform: 'uppercase', color: 'var(--color-light)',
+            background: 'var(--color-red)', padding: '8px 14px',
+            borderRadius: '4px', textDecoration: 'none',
+          }}>
+            Ραντεβού
+          </a>
+          <button onClick={() => setOpen(!open)} className="hamburger" style={{
           display: 'none', flexDirection: 'column', gap: '5px',
           background: 'none', border: 'none', cursor: 'pointer', padding: '8px',
         }}>
-          <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 6.5 : 0 }} style={{ display: 'block', width: '22px', height: '1.5px', background: 'var(--color-light)', transformOrigin: 'center' }} />
-          <motion.span animate={{ opacity: open ? 0 : 1 }} style={{ display: 'block', width: '22px', height: '1.5px', background: 'var(--color-light)' }} />
-          <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -6.5 : 0 }} style={{ display: 'block', width: '22px', height: '1.5px', background: 'var(--color-light)', transformOrigin: 'center' }} />
+          <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 6.5 : 0 }} style={{ display: 'block', width: '22px', height: '1.5px', background: 'var(--color-red)', transformOrigin: 'center' }} />
+          <motion.span animate={{ opacity: open ? 0 : 1 }} style={{ display: 'block', width: '22px', height: '1.5px', background: 'var(--color-red)' }} />
+          <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -6.5 : 0 }} style={{ display: 'block', width: '22px', height: '1.5px', background: 'var(--color-red)', transformOrigin: 'center' }} />
         </button>
       </motion.nav>
 
@@ -155,7 +164,7 @@ export default function Nav() {
       <style>{`
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
-          .hamburger { display: flex !important; }
+          .mobile-actions { display: flex !important; }
         }
       `}</style>
     </>

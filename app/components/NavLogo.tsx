@@ -21,13 +21,9 @@ export default function NavLogo({ scrolled }: NavLogoProps) {
       <motion.img
         src="/assets/dc-logo-text.svg"
         alt=""
-        animate={{ 
-          opacity: scrolled ? 0 : 1,
-          width: scrolled ? '0px' : 'auto',
-          marginLeft: scrolled ? '0px' : '10px',
-        }}
+        animate={{ opacity: scrolled ? 0 : 1 }}
         transition={{ duration: 0.3, ease: [0, 0, 0.2, 1] }}
-        style={{ height: '28px', filter: redFilter, flexShrink: 0, overflow: 'hidden' }}
+        style={{ height: '28px', filter: redFilter, flexShrink: 0, marginLeft: '10px' }}
       />
     </a>
   )
