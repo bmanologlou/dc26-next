@@ -1,13 +1,15 @@
 'use client'
-import { useRef, useState } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useRef, useState, useEffect } from 'react'
+import { motion, useInView, AnimatePresence, useDragControls } from 'framer-motion'
 
 const testimonials = [
-  { text: 'Εξαιρετική καθοδήγηση και υπομονή. Πέρασα εξετάσεις από την πρώτη φορά χάρη στη Δήμητρα.', name: 'Μαρία Κ.', cat: 'Κατηγορία Β' },
-  { text: 'Πολύ επαγγελματική σχολή. Ευέλικτα ωράρια που ταίριαξαν με τη δουλειά μου. Τη συνιστώ ανεπιφύλακτα.', name: 'Νίκος Π.', cat: 'Κατηγορία Α' },
-  { text: 'Ο καλύτερος εκπαιδευτής που θα μπορούσα να ζητήσω. Ήρεμος, σαφής και πάντα υποστηρικτικός.', name: 'Ελένη Σ.', cat: 'Κατηγορία Β' },
-  { text: 'Από τη πρώτη μέρα ένιωσα άνετα. Σπουδαία σχολή με πραγματικό ενδιαφέρον για τον μαθητή.', name: 'Δημήτρης Α.', cat: 'Κατηγορία Γ' },
+  { text: 'Εξαιρετική καθοδήγηση και υπομονή. Πέρασα εξετάσεις από την πρώτη φορά χάρη στη Δήμητρα.', name: 'Μαρία Κ.' },
+  { text: 'Πολύ επαγγελματική σχολή. Ευέλικτα ωράρια που ταίριαξαν με τη δουλειά μου. Τη συνιστώ ανεπιφύλακτα.', name: 'Νίκος Π.' },
+  { text: 'Ο καλύτερος εκπαιδευτής που θα μπορούσα να ζητήσω. Ήρεμος, σαφής και πάντα υποστηρικτικός.', name: 'Ελένη Σ.' },
+  { text: 'Από τη πρώτη μέρα ένιωσα άνετα. Σπουδαία σχολή με πραγματικό ενδιαφέρον για τον μαθητή.', name: 'Δημήτρης Α.' },
 ]
+
+const AUTO_INTERVAL = 5000
 
 export default function Testimonials() {
   const ref = useRef(null)
@@ -15,12 +17,18 @@ export default function Testimonials() {
   const [current, setCurrent] = useState(0)
   const [dir, setDir] = useState(1)
 
-  const go = (idx: number) => {
-    setDir(idx > current ? 1 : -1)
+  const go = (idx: number, d?: number) => {
+    setDir(d ?? (idx > current ? 1 : -1))
     setCurrent(idx)
   }
-  const prev = () => go(current === 0 ? testimonials.length - 1 : current - 1)
-  const next = () => go(current === testimonials.length - 1 ? 0 : current + 1)
+  const next = () => go(current === testimonials.length - 1 ? 0 : current + 1, 1)
+  const prev = () => go(current === 0 ? testimonials.length - 1 : current - 1, -1)
+
+  // Auto-advance
+  useEffect(() => {
+    const t = setInterval(next, AUTO_INTERVAL)
+    return () => clearInterval(t)
+  }, [current])
 
   return (
     <section ref={ref} style={{
@@ -29,7 +37,7 @@ export default function Testimonials() {
     }}>
       <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
 
-        {/* Heading + arrows */}
+        {/* Heading + desktop arrows */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -55,8 +63,8 @@ export default function Testimonials() {
             </h2>
           </div>
 
-          {/* Arrow controls */}
-          <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
+          {/* Desktop-only arrows */}
+          <div className="desktop-arrows" style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
             {[{ fn: prev, label: '←' }, { fn: next, label: '→' }].map(({ fn, label }) => (
               <button key={label} onClick={fn} style={{
                 width: '44px', height: '44px', borderRadius: '50%',
@@ -64,7 +72,7 @@ export default function Testimonials() {
                 background: 'none', cursor: 'pointer',
                 color: 'var(--color-light)', fontSize: '16px',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                transition: 'border-color 200ms, background 200ms',
+                transition: 'border-color 200ms, color 200ms',
               }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--color-red)'; e.currentTarget.style.color = 'var(--color-red)' }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-border)'; e.currentTarget.style.color = 'var(--color-light)' }}>
@@ -74,23 +82,31 @@ export default function Testimonials() {
           </div>
         </motion.div>
 
-        {/* Slider */}
-        <div style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* Slider — swipeable */}
+        <div style={{ position: 'relative', overflow: 'hidden', cursor: 'grab' }}>
           <AnimatePresence mode="wait" custom={dir}>
             <motion.div
               key={current}
               custom={dir}
-              initial={{ opacity: 0, x: dir * 60 }}
+              initial={{ opacity: 0, x: dir * 50 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: dir * -60 }}
+              exit={{ opacity: 0, x: dir * -50 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.1}
+              onDragEnd={(_, info) => {
+                if (info.offset.x < -50) next()
+                else if (info.offset.x > 50) prev()
+              }}
               style={{
                 border: '1px solid var(--color-border)',
                 borderRadius: '10px', padding: 'clamp(28px, 4vw, 48px)',
+                userSelect: 'none',
               }}>
               <div style={{
-                fontSize: 'clamp(32px, 4vw, 48px)', color: 'var(--color-red)',
-                lineHeight: 1, marginBottom: '20px', opacity: 0.5,
+                fontSize: 'clamp(40px, 5vw, 56px)', color: 'var(--color-red)',
+                lineHeight: 1, marginBottom: '20px', opacity: 0.4,
               }}>
                 "
               </div>
@@ -102,22 +118,19 @@ export default function Testimonials() {
                 {testimonials[current].text}
               </p>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-                <div>
-                  <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-light)' }}>
-                    {testimonials[current].name}
-                  </div>
-                  <div style={{ fontSize: '11px', color: 'var(--color-red-dark)', marginTop: '3px', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-                    {testimonials[current].cat}
-                  </div>
+                {/* Name only — red */}
+                <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-red)' }}>
+                  {testimonials[current].name}
                 </div>
 
-                {/* Dots */}
-                <div style={{ display: 'flex', gap: '8px' }}>
+                {/* Small dots */}
+                <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
                   {testimonials.map((_, i) => (
                     <button key={i} onClick={() => go(i)} style={{
-                      width: i === current ? '24px' : '8px', height: '8px',
-                      borderRadius: '4px', border: 'none', cursor: 'pointer',
-                      background: i === current ? 'var(--color-red)' : 'var(--color-border-mid)',
+                      width: i === current ? '16px' : '5px',
+                      height: '5px',
+                      borderRadius: '3px', border: 'none', cursor: 'pointer',
+                      background: i === current ? 'var(--color-red)' : 'rgba(255,255,255,0.2)',
                       transition: 'all 300ms ease', padding: 0,
                     }} />
                   ))}
@@ -127,6 +140,12 @@ export default function Testimonials() {
           </AnimatePresence>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .desktop-arrows { display: none !important; }
+        }
+      `}</style>
     </section>
   )
 }
