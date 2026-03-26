@@ -47,11 +47,7 @@ export default function Testimonials() {
             justifyContent: 'space-between', marginBottom: '48px', gap: '24px',
           }}>
           <div>
-              {/* Quote icon — bold geometric */}
-              <svg width="52" height="38" viewBox="0 0 52 38" fill="none" style={{ marginBottom: '24px' }}>
-                <path d="M0 38L8 0H22L18 38H0Z" fill="#ff4212"/>
-                <path d="M28 38L36 0H50L46 38H28Z" fill="#ff4212"/>
-              </svg>
+              <svg width="48" height="36" viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: '24px', display: 'block', flexShrink: 0 }}><path d="M4 36L12 0H24L16 36H4Z" fill="#ff4212"/><path d="M26 36L34 0H46L38 36H26Z" fill="#ff4212"/></svg>
               <p style={{
                 fontSize: 'clamp(16px, 2vw, 22px)', color: 'var(--color-light)',
                 lineHeight: 1.7, marginBottom: '32px', fontWeight: 500,
