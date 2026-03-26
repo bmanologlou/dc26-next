@@ -59,6 +59,7 @@ export default function Steps() {
               initial={{ opacity: 0, y: 32 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 + i * 0.12 }}
+              className='step-item'
               style={{
                 padding: '0 32px 0 0',
                 borderRight: i < 3 ? '1px solid var(--color-border)' : 'none',
@@ -93,6 +94,12 @@ export default function Steps() {
           ))}
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .step-item { border-right: none !important; padding: 24px 0 !important; border-bottom: 1px solid var(--color-border); }
+          .step-item:last-child { border-bottom: none !important; }
+        }
+      `}</style>
     </section>
   )
 }

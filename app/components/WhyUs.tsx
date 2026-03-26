@@ -43,7 +43,7 @@ export default function WhyUs() {
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
           gap: '0',
         }}>
           {features.map((f, i) => (
@@ -51,9 +51,10 @@ export default function WhyUs() {
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
+              className={`why-item why-item-${i}`}
               style={{
-                padding: '0 40px 0 0',
-                paddingLeft: i > 0 ? '40px' : '0',
+                padding: '0 32px 0 0',
+                paddingLeft: i > 0 ? '32px' : '0',
                 borderRight: i < 3 ? '1px solid var(--color-border)' : 'none',
               }}>
               <div style={{
@@ -76,6 +77,12 @@ export default function WhyUs() {
           ))}
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .why-item { border-right: none !important; padding: 24px 0 !important; border-bottom: 1px solid var(--color-border); }
+          .why-item:last-child { border-bottom: none !important; }
+        }
+      `}</style>
     </section>
   )
 }
