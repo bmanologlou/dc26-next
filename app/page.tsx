@@ -4,6 +4,11 @@ import Stats from './components/Stats'
 import Steps from './components/Steps'
 import Categories from './components/Categories'
 import Dimitra from './components/Dimitra'
+import WhyUs from './components/WhyUs'
+import Testimonials from './components/Testimonials'
+import CtaBanner from './components/CtaBanner'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
 
 export const metadata = {
   title: 'DC Drive — Σχολή Οδηγών Αθήνα',
@@ -19,6 +24,11 @@ export default function Home() {
       <Steps />
       <Categories />
       <Dimitra />
+      <WhyUs />
+      <Testimonials />
+      <CtaBanner />
+      <Contact />
+      <Footer />
     </main>
   )
 }
