@@ -68,13 +68,13 @@ export default function Nav() {
         {/* Mobile right side — CTA + Burger */}
         <div className="mobile-nav" style={{ display: 'none', alignItems: 'center', gap: '10px' }}>
           {!open && (
-            <a href="#contact" style={{
+            <a href="tel:+302105718756" style={{
               fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em',
               textTransform: 'uppercase', color: '#f7f7f8',
               background: '#ff4212', padding: '8px 14px',
               borderRadius: '4px', textDecoration: 'none', whiteSpace: 'nowrap',
             }}>
-              Ραντεβού
+              Καλέστε μας
             </a>
           )}
           <button
