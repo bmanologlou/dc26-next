@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import NavLogo from './NavLogo'
 
-const RED = 'var(--color-red)'
 const LINKS = [
   { label: 'Πώς ξεκινάς', href: '#steps' },
   { label: 'Διπλώματα', href: '#categories' },
@@ -13,17 +12,16 @@ const LINKS = [
 ]
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
   }, [])
 
-  // Lock body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
@@ -40,10 +38,10 @@ export default function Nav() {
           height: '72px',
           padding: '0 clamp(24px, 5vw, 80px)',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          background: 'linear-gradient(to bottom, rgba(32,32,39,0.82) 0%, rgba(32,32,39,0.4) 65%, transparent 100%)',
+          background: 'linear-gradient(to bottom, rgba(32,32,39,0.96) 0%, rgba(32,32,39,0.6) 70%, transparent 100%)',
         }}>
 
-        <NavLogo scrolled={scrolled} />
+        <NavLogo isMobile={isMobile} />
 
         {/* Desktop links */}
         <div style={{ display: 'flex', gap: '28px', alignItems: 'center' }} className="desktop-nav">
@@ -73,7 +71,7 @@ export default function Nav() {
 
         {/* Mobile — CTA + Burger */}
         <div className="mobile-actions" style={{ display: 'none', alignItems: 'center', gap: '10px' }}>
-          <a href="#contact" style={{
+          <a href="#contact" onClick={() => setOpen(false)} style={{
             fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em',
             textTransform: 'uppercase', color: 'var(--color-light)',
             background: 'var(--color-red)', padding: '8px 14px',
@@ -81,25 +79,25 @@ export default function Nav() {
           }}>
             Ραντεβού
           </a>
-
-          <button onClick={() => setOpen(!open)} style={{
-            background: 'none', border: 'none', cursor: 'pointer',
-            padding: '8px', display: 'flex', flexDirection: 'column', gap: '5px',
-          }}>
-            <motion.span
-              animate={{ rotate: open ? 45 : 0, y: open ? 6.5 : 0 }}
+          <button
+            onClick={() => setOpen(prev => !prev)}
+            aria-label="Menu"
+            style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              padding: '8px', display: 'flex', flexDirection: 'column',
+              gap: '5px', zIndex: 110, position: 'relative',
+            }}>
+            <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 6.5 : 0 }}
               style={{ display: 'block', width: '22px', height: '2px', background: 'var(--color-red)', transformOrigin: 'center', borderRadius: '2px' }} />
-            <motion.span
-              animate={{ opacity: open ? 0 : 1 }}
+            <motion.span animate={{ opacity: open ? 0 : 1 }}
               style={{ display: 'block', width: '22px', height: '2px', background: 'var(--color-red)', borderRadius: '2px' }} />
-            <motion.span
-              animate={{ rotate: open ? -45 : 0, y: open ? -6.5 : 0 }}
+            <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -6.5 : 0 }}
               style={{ display: 'block', width: '22px', height: '2px', background: 'var(--color-red)', transformOrigin: 'center', borderRadius: '2px' }} />
           </button>
         </div>
       </motion.nav>
 
-      {/* Mobile menu — full screen */}
+      {/* Fullscreen mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -108,19 +106,24 @@ export default function Nav() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             style={{
-              position: 'fixed', inset: 0, zIndex: 99,
+              position: 'fixed', inset: 0, zIndex: 105,
               background: 'var(--color-dark)',
               display: 'flex', flexDirection: 'column',
               justifyContent: 'center',
               padding: 'clamp(24px, 6vw, 48px)',
             }}>
 
-            {/* Close button top right */}
-            <button onClick={() => setOpen(false)} style={{
-              position: 'absolute', top: '20px', right: '20px',
-              background: 'none', border: 'none', cursor: 'pointer',
-              color: 'var(--color-muted)', fontSize: '24px', lineHeight: 1,
-            }}>✕</button>
+            {/* X button */}
+            <button
+              onClick={() => setOpen(false)}
+              style={{
+                position: 'absolute', top: '20px', right: '20px',
+                background: 'none', border: 'none', cursor: 'pointer',
+                color: 'var(--color-muted)', fontSize: '24px',
+                lineHeight: 1, zIndex: 106,
+              }}>
+              ✕
+            </button>
 
             {/* Links */}
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
@@ -147,7 +150,6 @@ export default function Nav() {
               ))}
             </nav>
 
-            {/* Bottom CTA */}
             <motion.a
               href="#contact"
               onClick={() => setOpen(false)}
