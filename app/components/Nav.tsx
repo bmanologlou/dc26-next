@@ -33,10 +33,12 @@ export default function Nav() {
           padding: '0 clamp(24px, 5vw, 80px)',
           height: '72px',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          background: scrolled ? 'var(--color-dark)' : 'transparent',
+          background: scrolled 
+            ? 'linear-gradient(to bottom, rgba(32,32,39,1) 0%, rgba(32,32,39,0.98) 70%, rgba(32,32,39,0.85) 100%)'
+            : 'linear-gradient(to bottom, rgba(32,32,39,0.7) 0%, rgba(32,32,39,0.3) 60%, transparent 100%)',
           backdropFilter: 'none',
-          borderBottom: scrolled ? '1px solid var(--color-border)' : 'none',
-          transition: 'background 400ms ease, border 400ms ease',
+          borderBottom: 'none',
+          transition: 'background 400ms ease',
         }}>
 
         {/* Logo — switches between full logo and brandmark */}
