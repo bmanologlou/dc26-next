@@ -34,7 +34,7 @@ export default function Nav() {
         height: '88px',
         padding: '0 clamp(24px, 5vw, 80px)',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        background: 'linear-gradient(to bottom, rgba(15,15,18,0.97) 0%, rgba(15,15,18,0.4) 70%, transparent 100%)',
+        background: 'linear-gradient(to bottom, rgba(15,15,18,1) 0%, rgba(15,15,18,1) 50%, rgba(15,15,18,0.5) 80%, transparent 100%)',
       }}>
 
         <NavLogo />
