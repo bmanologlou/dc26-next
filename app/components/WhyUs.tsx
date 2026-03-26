@@ -45,6 +45,7 @@ export default function WhyUs() {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
           gap: '0',
+          overflow: 'hidden',
         }}>
           {features.map((f, i) => (
             <motion.div key={i}
