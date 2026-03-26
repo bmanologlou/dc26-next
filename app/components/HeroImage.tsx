@@ -8,7 +8,7 @@ export default function HeroImage() {
 
   return (
     <section ref={ref} style={{
-      padding: '0 clamp(24px, 5vw, 80px)',
+      padding: 'clamp(40px, 5vw, 64px) clamp(24px, 5vw, 80px) 0',
       borderTop: '1px solid var(--color-border)',
     }}>
       <motion.div
