@@ -9,6 +9,7 @@ export default function HeroImage() {
   return (
     <section ref={ref} style={{
       padding: 'clamp(40px, 5vw, 64px) clamp(24px, 5vw, 80px) 0',
+      boxSizing: 'border-box', width: '100%',
       borderTop: '1px solid var(--color-border)',
     }}>
       <motion.div
@@ -17,7 +18,7 @@ export default function HeroImage() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         style={{
           maxWidth: '1440px', margin: '0 auto',
-          borderRadius: '12px', overflow: 'hidden',
+          borderRadius: '12px', overflow: 'hidden', width: '100%',
           aspectRatio: '16/7',
           minHeight: 'clamp(260px, 40vw, 520px)',
           background: 'var(--color-dark-elevated)',
