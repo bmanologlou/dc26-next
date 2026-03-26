@@ -66,19 +66,19 @@ export default function Typography() {
 
         {/* HEADINGS */}
         <Section title="Headings">
-          <Row label="t-display" spec="clamp(48px→104px) · weight 900 · tracking -0.03em" usage="Hero — h1 line 2">
+          <Row label="t-display" spec="clamp(48px→104px) · mobile: 48px · desktop: 104px · weight 900 · tracking -0.03em" usage="Hero — h1 line 2">
             <p className="t-display" style={{ margin: 0 }}>Μάθε να οδηγείς.</p>
           </Row>
-          <Row label="t-h1" spec="clamp(40px→80px) · weight 900 · tracking -0.025em" usage="Hero — h1 line 1">
+          <Row label="t-h1" spec="clamp(40px→80px) · mobile: 40px · desktop: 80px · weight 900 · tracking -0.025em" usage="Hero — h1 line 1">
             <p className="t-h1" style={{ margin: 0 }}>Μάθε να οδηγείς.</p>
           </Row>
-          <Row label="t-h2" spec="clamp(28px→52px) · weight 800 · tracking -0.02em · color: red" usage="Section headings — Διπλώματα, Πώς ξεκινάς, Γιατί DC Drive...">
+          <Row label="t-h2" spec="clamp(28px→52px) · mobile: 28px · desktop: 52px · weight 800 · tracking -0.02em · color: red" usage="Section headings — Διπλώματα, Πώς ξεκινάς, Γιατί DC Drive...">
             <p className="t-h2" style={{ margin: 0 }}>Τι δίπλωμα θέλεις;</p>
           </Row>
-          <Row label="t-h3" spec="clamp(18px→24px) · weight 700 · tracking -0.01em" usage="Card titles — Αυτοκίνητο, Μοτοσυκλέτα, Επαγγελματικά">
+          <Row label="t-h3" spec="clamp(18px→24px) · mobile: 18px · desktop: 24px · weight 700 · tracking -0.01em" usage="Card titles — Αυτοκίνητο, Μοτοσυκλέτα, Επαγγελματικά">
             <p className="t-h3" style={{ margin: 0 }}>Κατηγορία Β — Αυτοκίνητο</p>
           </Row>
-          <Row label="t-h4" spec="clamp(15px→18px) · weight 700" usage="Why Us features — Εμπειρία, Επιτυχία, Ευελιξία">
+          <Row label="t-h4" spec="clamp(15px→18px) · mobile: 15px · desktop: 18px · weight 700" usage="Why Us features — Εμπειρία, Επιτυχία, Ευελιξία">
             <p className="t-h4" style={{ margin: 0 }}>Εμπειρία από το 1979</p>
           </Row>
         </Section>
@@ -94,7 +94,7 @@ export default function Typography() {
           <Row label="t-label" spec="10px · weight 600 · tracking 0.1em · uppercase — για φόρμες, nav" usage="Form labels — Όνομα, Τηλέφωνο, Κατηγορία">
             <p className="t-label" style={{ margin: 0 }}>Τηλέφωνο επικοινωνίας</p>
           </Row>
-          <Row label="t-stat" spec="clamp(32px→48px) · weight 900 · color: red-dark — για στατιστικά" usage="Stats bar — 1979, 85%, 2k+, 6">
+          <Row label="t-stat" spec="clamp(32px→48px) · mobile: 32px · desktop: 48px · weight 900 · color: red-dark" usage="Stats bar — 1979, 85%, 2k+, 6">
             <div style={{ display: 'flex', gap: '48px', flexWrap: 'wrap' }}>
               {['1979', '85%', '2k+', '6'].map(n => (
                 <div key={n}>
@@ -108,10 +108,10 @@ export default function Typography() {
 
         {/* BODY */}
         <Section title="Body Text">
-          <Row label="t-body-lg" spec="clamp(15px→18px) · weight 400 · line-height 1.75 — lead paragraphs" usage="Hero subtitle, Dimitra text, CTA description">
+          <Row label="t-body-lg" spec="clamp(15px→18px) · mobile: 15px · desktop: 18px · weight 400 · line-height 1.75" usage="Hero subtitle, Dimitra text, CTA description">
             <p className="t-body-lg" style={{ margin: 0 }}>Σύγχρονη εκπαίδευση με έμφαση στην ασφάλεια, την ψυχραιμία και την αυτοπεποίθηση. Είμαστε δίπλα σου σε κάθε βήμα της διαδρομής.</p>
           </Row>
-          <Row label="t-body" spec="clamp(13px→15px) · weight 400 · line-height 1.7 — standard text" usage="Steps description, Why Us description, Testimonials">
+          <Row label="t-body" spec="clamp(13px→15px) · mobile: 13px · desktop: 15px · weight 400 · line-height 1.7" usage="Steps description, Why Us description, Testimonials">
             <p className="t-body" style={{ margin: 0 }}>Η σχολή ιδρύθηκε το 1979 από τον πατέρα μου, Δημήτρη Χρηστοθανόπουλο. Συνεχίζω την ίδια παράδοση με σύγχρονη προσέγγιση, τον ίδιο σεβασμό στον μαθητή και την ίδια αγάπη για τη δουλειά.</p>
           </Row>
           <Row label="t-body-sm" spec="13px · weight 400 · line-height 1.65 — card descriptions" usage="Category cards, extra services cards, footer tagline">
@@ -169,7 +169,7 @@ export default function Typography() {
               ))}
             </div>
           </Row>
-          <Row label="nav-mobile-link" spec="clamp(32px→52px) · weight 800 · tracking -0.02em — fullscreen menu" usage="Mobile fullscreen menu links">
+          <Row label="nav-mobile-link" spec="clamp(32px→52px) · mobile: 32px · desktop: 52px · weight 800 · tracking -0.02em" usage="Mobile fullscreen menu links">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               {['Πώς ξεκινάς', 'Διπλώματα'].map(l => (
                 <span key={l} style={{ fontSize: 'clamp(32px, 6vw, 52px)', fontWeight: 800, letterSpacing: '-0.02em', color: '#f7f7f8', lineHeight: 1.15 }}>{l}</span>
