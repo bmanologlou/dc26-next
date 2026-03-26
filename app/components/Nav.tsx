@@ -34,7 +34,7 @@ export default function Nav() {
         height: '88px',
         padding: '0 clamp(24px, 5vw, 80px)',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        background: 'linear-gradient(to bottom, rgba(32,32,39,0.96) 0%, rgba(32,32,39,0.55) 70%, transparent 100%)',
+        background: 'linear-gradient(to bottom, rgba(15,15,18,0.97) 0%, rgba(15,15,18,0.4) 70%, transparent 100%)',
       }}>
 
         <NavLogo />
@@ -118,7 +118,7 @@ export default function Nav() {
             transition={{ duration: 0.2, ease: 'easeOut' }}
             style={{
               position: 'fixed', inset: 0, zIndex: 190,
-              background: '#202027',
+              background: '#0f0f12',
               display: 'flex', flexDirection: 'column',
               padding: '100px clamp(24px, 6vw, 48px) 60px',
               overflowY: 'auto',
@@ -175,7 +175,7 @@ export default function Nav() {
             {/* Bottom fade */}
             <div style={{
               position: 'absolute', bottom: 0, left: 0, right: 0, height: '80px',
-              background: 'linear-gradient(to top, #202027, transparent)',
+              background: 'linear-gradient(to top, #0f0f12, transparent)',
               pointerEvents: 'none',
             }} />
           </motion.div>

@@ -16,9 +16,7 @@ export default function Steps() {
   return (
     <section id="steps" ref={ref} style={{
       padding: 'clamp(64px, 8vw, 120px) clamp(24px, 5vw, 80px)',
-      background: 'var(--color-dark-elevated)',
       borderTop: '1px solid var(--color-border)',
-      borderBottom: '1px solid var(--color-border)',
     }}>
       <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
 

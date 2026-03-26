@@ -9,7 +9,7 @@ export default function Dimitra() {
   return (
     <section id="dimitra" ref={ref} style={{
       padding: 'clamp(64px, 8vw, 120px) clamp(24px, 5vw, 80px)',
-      borderBottom: '1px solid var(--color-border)',
+      borderTop: '1px solid var(--color-border)',
     }}>
       <div style={{
         maxWidth: '1440px', margin: '0 auto',
