@@ -31,7 +31,7 @@ export default function Nav() {
       {/* ── NAV BAR ─────────────────────────────── */}
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200,
-        height: '72px',
+        height: '88px',
         padding: '0 clamp(24px, 5vw, 80px)',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         background: 'linear-gradient(to bottom, rgba(32,32,39,0.96) 0%, rgba(32,32,39,0.55) 70%, transparent 100%)',
