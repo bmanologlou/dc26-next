@@ -7,19 +7,27 @@ export default function NavLogo({ isMobile }: { isMobile: boolean }) {
     <a href="/" style={{
       display: 'flex', alignItems: 'center',
       gap: '12px', textDecoration: 'none',
+      flexShrink: 0,
     }}>
       <img
         src="/assets/dc-brandmark.svg"
         alt="DC Drive"
-        style={{ height: '38px', width: '38px', filter: RED, flexShrink: 0 }}
+        className="nav-brandmark"
+        style={{ width: 'auto', filter: RED, flexShrink: 0, display: 'block' }}
       />
       {!isMobile && (
         <img
           src="/assets/dc-wordmark.svg"
           alt="DC Christothanopoulou"
-          style={{ height: '38px', width: '38px', filter: RED, flexShrink: 0 }}
+          style={{ height: '38px', width: 'auto', filter: RED, flexShrink: 0, display: 'block' }}
         />
       )}
+      <style>{`
+        .nav-brandmark { height: 38px; }
+        @media (max-width: 768px) {
+          .nav-brandmark { height: 44px; }
+        }
+      `}</style>
     </a>
   )
 }
