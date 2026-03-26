@@ -103,7 +103,7 @@ export default function Testimonials() {
               }}>
 
               {/* Quote icon placeholder — replace with custom SVG */}
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" style={{ marginBottom: '24px', display: 'block' }}>
+              <svg width="30" height="30" viewBox="0 0 40 40" fill="none" style={{ marginBottom: '24px', display: 'block' }}>
                 <circle cx="20" cy="20" r="20" fill="#ff4212" />
               </svg>
 
@@ -115,23 +115,23 @@ export default function Testimonials() {
                 {testimonials[current].text}
               </p>
 
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
-                <div style={{ fontSize: '14px', fontWeight: 700, color: '#ff4212' }}>
-                  {testimonials[current].name}
-                </div>
-                <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                  {testimonials.map((_, i) => (
-                    <button key={i} onClick={() => go(i)} style={{
-                      width: i === current ? '16px' : '5px', height: '5px',
-                      borderRadius: '3px', border: 'none', cursor: 'pointer',
-                      background: i === current ? '#ff4212' : 'rgba(255,255,255,0.2)',
-                      transition: 'all 300ms ease', padding: 0,
-                    }} />
-                  ))}
-                </div>
+              <div style={{ fontSize: '14px', fontWeight: 700, color: '#ff4212' }}>
+                {testimonials[current].name}
               </div>
             </motion.div>
           </AnimatePresence>
+        </div>
+
+        {/* Dots — outside slider, always visible */}
+        <div style={{ display: 'flex', gap: '6px', justifyContent: 'center', marginTop: '24px' }}>
+          {testimonials.map((_, i) => (
+            <button key={i} onClick={() => go(i)} style={{
+              width: i === current ? '16px' : '5px', height: '5px',
+              borderRadius: '3px', border: 'none', cursor: 'pointer',
+              background: i === current ? '#ff4212' : 'rgba(255,255,255,0.2)',
+              transition: 'all 300ms ease', padding: 0,
+            }} />
+          ))}
         </div>
       </div>
 
