@@ -8,7 +8,7 @@ export default function HeroImage() {
 
   return (
     <section ref={ref} style={{
-      padding: 'clamp(40px, 5vw, 64px) clamp(24px, 5vw, 80px) 0',
+      padding: 'clamp(20px, 5vw, 64px) clamp(12px, 5vw, 80px) 0',
       boxSizing: 'border-box', width: '100%',
       borderTop: '1px solid var(--color-border)',
     }}>
