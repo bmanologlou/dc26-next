@@ -46,7 +46,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.1 }}
             style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {[
-              { label: 'Τηλέφωνο', value: '[ΑΝΑΜΟΝΗ]', href: 'tel:' },
+              { label: 'Τηλέφωνο', value: '[ΑΝΑΜΟΝΗ]', href: 'tel:+302105718756' },
               { label: 'Email', value: '[ΑΝΑΜΟΝΗ]', href: 'mailto:' },
               { label: 'Διεύθυνση', value: '[ΑΝΑΜΟΝΗ]', href: '#' },
               { label: 'Ωράριο', value: '[ΑΝΑΜΟΝΗ]', href: null },
