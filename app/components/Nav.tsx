@@ -23,8 +23,18 @@ export default function Nav() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    if (open) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+      document.body.style.overflow = 'hidden'
+      document.body.style.paddingRight = scrollbarWidth + 'px'
+    } else {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
   }, [open])
 
   return (
@@ -70,7 +80,7 @@ export default function Nav() {
         </div>
 
         {/* Mobile — CTA + Burger */}
-        <div className="mobile-actions" style={{ display: 'none', alignItems: 'center', gap: '10px' }}>
+        <div className="mobile-actions" style={{ display: 'none', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
           <a href="#contact" onClick={() => setOpen(false)} style={{
             fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em',
             textTransform: 'uppercase', color: 'var(--color-light)',
@@ -111,7 +121,14 @@ export default function Nav() {
               display: 'flex', flexDirection: 'column',
               justifyContent: 'center',
               padding: 'clamp(24px, 6vw, 48px)',
+              paddingBottom: 'clamp(48px, 10vw, 80px)',
             }}>
+            {/* Bottom fade */}
+            <div style={{
+              position: 'absolute', bottom: 0, left: 0, right: 0,
+              height: '120px', pointerEvents: 'none',
+              background: 'linear-gradient(to top, var(--color-dark) 20%, transparent 100%)',
+            }} />
 
             {/* Brandmark top-left */}
             <div style={{ position: 'absolute', top: '17px', left: 'clamp(24px, 6vw, 48px)' }}>
