@@ -4,30 +4,22 @@ const RED = 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(1234%)
 
 export default function NavLogo({ isMobile }: { isMobile: boolean }) {
   return (
-    <a href="/" style={{
-      display: 'flex', alignItems: 'center',
-      gap: '12px', textDecoration: 'none',
-      flexShrink: 0,
-    }}>
-      <img
-        src="/assets/dc-brandmark.svg"
-        alt="DC Drive"
-        className="nav-brandmark"
-        style={{ width: 'auto', filter: RED, flexShrink: 0, display: 'block' }}
-      />
-      {!isMobile && (
+    <a href="/" style={{ textDecoration: 'none', display: 'block', flexShrink: 0 }}>
+      {isMobile ? (
+        /* Mobile — brandmark only */
         <img
-          src="/assets/dc-wordmark.svg"
-          alt="DC Christothanopoulou"
-          style={{ height: '38px', width: 'auto', filter: RED, flexShrink: 0, display: 'block' }}
+          src="/assets/dc-brandmark.svg"
+          alt="DC Drive"
+          style={{ height: '44px', width: 'auto', filter: RED, display: 'block' }}
+        />
+      ) : (
+        /* Desktop — full logotype (brandmark + text as one SVG) */
+        <img
+          src="/assets/dc-logotype.svg"
+          alt="DC Drive"
+          style={{ height: '52px', width: 'auto', filter: RED, display: 'block' }}
         />
       )}
-      <style>{`
-        .nav-brandmark { height: 38px; }
-        @media (max-width: 768px) {
-          .nav-brandmark { height: 44px; }
-        }
-      `}</style>
     </a>
   )
 }
