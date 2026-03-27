@@ -135,7 +135,6 @@ export default function Contact() {
                 </svg>
               </div>
               </div>
-            </div>
 
             <div>
               <label style={{
