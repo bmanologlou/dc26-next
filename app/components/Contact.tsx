@@ -125,6 +125,16 @@ export default function Contact() {
                   <option key={o}>{o}</option>
                 ))}
               </select>
+              <div style={{
+                position: 'absolute', right: '14px', top: '50%',
+                transform: 'translateY(-50%)', pointerEvents: 'none',
+                color: 'rgba(247,247,248,0.4)',
+              }}>
+                <svg width='12' height='12' viewBox='0 0 12 12' fill='none'>
+                  <path d='M2 4L6 8L10 4' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round'/>
+                </svg>
+              </div>
+              </div>
             </div>
 
             <div>
