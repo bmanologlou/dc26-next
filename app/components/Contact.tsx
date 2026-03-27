@@ -113,27 +113,30 @@ export default function Contact() {
               }}>
                 Ενδιαφέρομαι για
               </label>
-              <select style={{
-                width: '100%', padding: '12px 16px',
-                background: 'var(--color-dark-elevated)',
-                border: '1px solid var(--color-border)',
-                borderRadius: '4px', color: 'var(--color-light)',
-                fontSize: '14px', outline: 'none',
-              }}>
-                <option value='' disabled selected>Επιλέξτε υπηρεσία</option>
-                {['Δίπλωμα Β', 'Δίπλωμα Α', 'Δίπλωμα ΑΜ', 'Δίπλωμα Γ/Δ', 'Επέκταση διπλώματος', 'Ανανέωση διπλώματος', 'Μετεκπαίδευση', 'Διεκπεραιώσεις', 'Άλλο'].map(o => (
-                  <option key={o}>{o}</option>
-                ))}
-              </select>
-              <div style={{
-                position: 'absolute', right: '14px', top: '50%',
-                transform: 'translateY(-50%)', pointerEvents: 'none',
-                color: 'rgba(247,247,248,0.4)',
-              }}>
-                <svg width='12' height='12' viewBox='0 0 12 12' fill='none'>
-                  <path d='M2 4L6 8L10 4' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round'/>
-                </svg>
-              </div>
+              <div style={{ position: 'relative' }}>
+                <select style={{
+                  width: '100%', padding: '12px 16px',
+                  background: 'var(--color-dark-elevated)',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: '4px', color: 'var(--color-light)',
+                  fontSize: '14px', outline: 'none',
+                  appearance: 'none', WebkitAppearance: 'none',
+                  paddingRight: '40px', cursor: 'pointer',
+                }}>
+                  <option value="" disabled>Επιλέξτε υπηρεσία</option>
+                  {['Δίπλωμα Β', 'Δίπλωμα Α', 'Δίπλωμα ΑΜ', 'Δίπλωμα Γ/Δ', 'Επέκταση διπλώματος', 'Ανανέωση διπλώματος', 'Μετεκπαίδευση', 'Διεκπεραιώσεις', 'Άλλο'].map(o => (
+                    <option key={o} value={o}>{o}</option>
+                  ))}
+                </select>
+                <div style={{
+                  position: 'absolute', right: '14px', top: '50%',
+                  transform: 'translateY(-50%)', pointerEvents: 'none',
+                  color: 'rgba(247,247,248,0.4)',
+                }}>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
               </div>
 
             <div>
