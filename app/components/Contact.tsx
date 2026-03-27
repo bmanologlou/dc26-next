@@ -134,8 +134,7 @@ export default function Contact() {
                     paddingRight: '40px',
                     cursor: 'pointer',
                   }}
-                  onFocus={e => (e.currentTarget.style.borderColor = 'var(--color-red)')}
-                  onBlur={e => (e.currentTarget.style.borderColor = 'var(--color-border)')}>
+>
                   <option value="" disabled>Επιλέξτε υπηρεσία</option>
                   {services.map(s => (
                     <option key={s} value={s}>{s}</option>
