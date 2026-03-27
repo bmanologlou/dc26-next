@@ -4,20 +4,20 @@ import './globals.css'
 export const metadata: Metadata = {
   metadataBase: new URL('https://dc26.eoflux.com'),
   title: {
-    default: 'DC Drive — Σχολή Οδηγών Αθήνα | Από το 1979',
-    template: '%s | DC Drive Σχολή Οδηγών',
+    default: 'Σχολή Οδηγών Δήμητρα Χριστοθανοπούλου | DC Drive Αθήνα',
+    template: '%s | Σχολή Οδηγών Δήμητρα Χριστοθανοπούλου',
   },
-  description: 'Σχολή οδηγών DC Drive στην Αθήνα. Διπλώματα Β, Α, Γ, Δ. Υψηλό ποσοστό επιτυχίας, εμπειρία από το 1979. Κλείστε ραντεβού σήμερα.',
-  keywords: ['σχολή οδηγών', 'δίπλωμα οδήγησης', 'Αθήνα', 'κατηγορία Β', 'μοτοσυκλέτα', 'επαγγελματικό δίπλωμα', 'DC Drive'],
+  description: 'Σχολή οδηγών Δήμητρα Χριστοθανοπούλου στην Αθήνα. Διπλώματα Β, Α, Γ, Δ. Υψηλό ποσοστό επιτυχίας, εμπειρία από το 1979. Κλείστε ραντεβού σήμερα.',
+  keywords: ['σχολή οδηγών', 'Δήμητρα Χριστοθανοπούλου', 'DC Drive', 'δίπλωμα οδήγησης', 'Αθήνα', 'κατηγορία Β', 'μοτοσυκλέτα', 'επαγγελματικό δίπλωμα', 'σχολή οδηγών Αθήνα', 'ανανέωση διπλώματος', 'μετεκπαίδευση'],
   authors: [{ name: 'DC Drive' }],
   creator: 'Eternal Optimists',
   openGraph: {
     type: 'website',
     locale: 'el_GR',
     url: 'https://dc26.eoflux.com',
-    siteName: 'DC Drive — Σχολή Οδηγών',
-    title: 'DC Drive — Σχολή Οδηγών Αθήνα | Από το 1979',
-    description: 'Σχολή οδηγών DC Drive στην Αθήνα. Διπλώματα Β, Α, Γ, Δ. Υψηλό ποσοστό επιτυχίας, εμπειρία από το 1979.',
+    siteName: 'Σχολή Οδηγών Δήμητρα Χριστοθανοπούλου',
+    title: 'Σχολή Οδηγών Δήμητρα Χριστοθανοπούλου | DC Drive Αθήνα',
+    description: 'Σχολή οδηγών Δήμητρα Χριστοθανοπούλου στην Αθήνα. Διπλώματα Β, Α, Γ, Δ. Υψηλό ποσοστό επιτυχίας, εμπειρία από το 1979.',
     images: [
       {
         url: '/assets/og-image.jpg',
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DC Drive — Σχολή Οδηγών Αθήνα',
-    description: 'Σχολή οδηγών στην Αθήνα από το 1979. Διπλώματα Β, Α, Γ, Δ.',
+    title: 'Σχολή Οδηγών Δήμητρα Χριστοθανοπούλου | DC Drive',
+    description: 'Σχολή οδηγών Δήμητρα Χριστοθανοπούλου στην Αθήνα από το 1979. Διπλώματα Β, Α, Γ, Δ.',
     images: ['/assets/og-image.jpg'],
   },
   robots: {
@@ -52,8 +52,9 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'DrivingSchool',
-  name: 'DC Drive — Σχολή Οδηγών',
-  description: 'Σχολή οδηγών στην Αθήνα από το 1979. Διπλώματα Β, Α, Γ, Δ.',
+  name: 'Σχολή Οδηγών Δήμητρα Χριστοθανοπούλου',
+  alternateName: 'DC Drive',
+  description: 'Σχολή οδηγών Δήμητρα Χριστοθανοπούλου στην Αθήνα από το 1979. Διπλώματα Β, Α, Γ, Δ.',
   url: 'https://dc26.eoflux.com',
   telephone: '+302105718756',
   foundingDate: '1979',

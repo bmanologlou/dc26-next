@@ -111,7 +111,7 @@ export default function Contact() {
                 letterSpacing: '0.1em', textTransform: 'uppercase',
                 color: 'var(--color-muted)', marginBottom: '8px',
               }}>
-                Κατηγορία
+                Ενδιαφέρομαι για
               </label>
               <select style={{
                 width: '100%', padding: '12px 16px',
@@ -120,7 +120,7 @@ export default function Contact() {
                 borderRadius: '4px', color: 'var(--color-light)',
                 fontSize: '14px', outline: 'none',
               }}>
-                {['Κατηγορία Β', 'Κατηγορία Α / ΑΜ', 'Κατηγορία Γ/Δ', 'Ανανέωση', 'Άλλο'].map(o => (
+                {['Ενδιαφέρομαι για Β', 'Ενδιαφέρομαι για Α / ΑΜ', 'Ενδιαφέρομαι για Γ/Δ', 'Ανανέωση', 'Άλλο'].map(o => (
                   <option key={o}>{o}</option>
                 ))}
               </select>

@@ -21,7 +21,8 @@ export default function Footer() {
               style={{ height: '40px', width: 'auto', filter: RED_FILTER, marginBottom: '16px', display: 'block' }} />
             <p style={{ fontSize: '13px', color: 'var(--color-muted)', lineHeight: 1.6, maxWidth: '260px' }}>
               Learn Smart, Drive Safe.<br />
-              Σχολή Οδηγών στην Αθήνα από το 1979.
+              Σχολή Οδηγών Δήμητρα Χριστοθανοπούλου<br />
+              Αθήνα · Από το 1979.
             </p>
           </div>
 
@@ -73,7 +74,7 @@ export default function Footer() {
           alignItems: 'center', gap: '16px', flexWrap: 'wrap',
         }}>
           <div style={{ fontSize: '12px', color: 'var(--color-subtle)' }}>
-            © {year} DC Drive — Dimitra Christothanopoulou
+            © {year} Σχολή Οδηγών Δήμητρα Χριστοθανοπούλου
           </div>
           <div style={{ fontSize: '12px', color: 'var(--color-subtle)' }}>
             Σχεδιασμός:{' '}
