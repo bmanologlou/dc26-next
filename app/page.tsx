@@ -9,6 +9,7 @@ import WhyUs from './components/WhyUs'
 import Testimonials from './components/Testimonials'
 import CtaBanner from './components/CtaBanner'
 import Contact from './components/Contact'
+import FAQ from './components/FAQ'
 import Footer from './components/Footer'
 
 export const metadata = {
@@ -28,6 +29,7 @@ export default function Home() {
       <Dimitra />
       <WhyUs />
       <Testimonials />
+      <FAQ />
       <CtaBanner />
       <Contact />
       <Footer />
