@@ -2,6 +2,21 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
+const services = [
+  'Δίπλωμα Β', 'Δίπλωμα Α', 'Δίπλωμα ΑΜ', 'Δίπλωμα Γ/Δ',
+  'Επέκταση διπλώματος', 'Ανανέωση διπλώματος',
+  'Μετεκπαίδευση', 'Διεκπεραιώσεις', 'Άλλο',
+]
+
+const inputStyle = {
+  width: '100%', padding: '12px 16px',
+  background: 'var(--color-dark-elevated)',
+  border: '1px solid var(--color-border)',
+  borderRadius: '4px', color: 'var(--color-light)',
+  fontSize: '14px', outline: 'none', fontFamily: 'inherit',
+  transition: 'border-color 200ms',
+}
+
 export default function Contact() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
@@ -18,20 +33,8 @@ export default function Contact() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           style={{ marginBottom: '56px' }}>
-          <div style={{
-            fontSize: '10px', fontWeight: 600, letterSpacing: '0.16em',
-            textTransform: 'uppercase', color: 'var(--color-red-dark)',
-            marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px',
-          }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-red-dark)', display: 'inline-block' }} />
-            Επικοινωνία
-          </div>
-          <h2 style={{
-            fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 800,
-            letterSpacing: '-0.02em', color: 'var(--color-red)', lineHeight: 1.1,
-          }}>
-            Επικοινωνήστε μαζί μας
-          </h2>
+          <div className="t-eyebrow-line" style={{ marginBottom: '12px' }}>Επικοινωνία</div>
+          <h2 className="t-h2">Επικοινωνήστε μαζί μας</h2>
         </motion.div>
 
         <div style={{
@@ -46,7 +49,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.1 }}
             style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {[
-              { label: 'Τηλέφωνο', value: '[ΑΝΑΜΟΝΗ]', href: 'tel:+302105718756' },
+              { label: 'Τηλέφωνο', value: '210 571 8756', href: 'tel:+302105718756' },
               { label: 'Email', value: '[ΑΝΑΜΟΝΗ]', href: 'mailto:' },
               { label: 'Διεύθυνση', value: '[ΑΝΑΜΟΝΗ]', href: '#' },
               { label: 'Ωράριο', value: '[ΑΝΑΜΟΝΗ]', href: null },
@@ -68,7 +71,9 @@ export default function Contact() {
                     {value}
                   </a>
                 ) : (
-                  <div style={{ fontSize: '18px', fontWeight: 600, color: 'var(--color-light)' }}>{value}</div>
+                  <div style={{ fontSize: '18px', fontWeight: 600, color: 'var(--color-light)' }}>
+                    {value}
+                  </div>
                 )}
               </div>
             ))}
@@ -80,52 +85,60 @@ export default function Contact() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15 }}
             style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {[
-              { label: 'Όνομα', type: 'text', placeholder: 'Το όνομά σου' },
-              { label: 'Τηλέφωνο', type: 'tel', placeholder: '69X XXX XXXX' },
-            ].map(({ label, type, placeholder }) => (
-              <div key={label}>
-                <label style={{
-                  display: 'block', fontSize: '10px', fontWeight: 600,
-                  letterSpacing: '0.1em', textTransform: 'uppercase',
-                  color: 'var(--color-muted)', marginBottom: '8px',
-                }}>
-                  {label}
-                </label>
-                <input type={type} placeholder={placeholder} style={{
-                  width: '100%', padding: '12px 16px',
-                  background: 'var(--color-dark-elevated)',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: '4px', color: 'var(--color-light)',
-                  fontSize: '14px', outline: 'none',
-                  transition: 'border-color 200ms',
-                }}
-                onFocus={e => (e.currentTarget.style.borderColor = 'var(--color-red)')}
-                onBlur={e => (e.currentTarget.style.borderColor = 'var(--color-border)')} />
-              </div>
-            ))}
 
+            {/* Name */}
             <div>
               <label style={{
                 display: 'block', fontSize: '10px', fontWeight: 600,
                 letterSpacing: '0.1em', textTransform: 'uppercase',
                 color: 'var(--color-muted)', marginBottom: '8px',
-              }}>
-                Ενδιαφέρομαι για
-              </label>
+              }}>Όνομα</label>
+              <input
+                type="text"
+                placeholder="Το όνομά σου"
+                style={inputStyle}
+                onFocus={e => (e.currentTarget.style.borderColor = 'var(--color-red)')}
+                onBlur={e => (e.currentTarget.style.borderColor = 'var(--color-border)')}
+              />
+            </div>
+
+            {/* Phone */}
+            <div>
+              <label style={{
+                display: 'block', fontSize: '10px', fontWeight: 600,
+                letterSpacing: '0.1em', textTransform: 'uppercase',
+                color: 'var(--color-muted)', marginBottom: '8px',
+              }}>Τηλέφωνο</label>
+              <input
+                type="tel"
+                placeholder="69X XXX XXXX"
+                style={inputStyle}
+                onFocus={e => (e.currentTarget.style.borderColor = 'var(--color-red)')}
+                onBlur={e => (e.currentTarget.style.borderColor = 'var(--color-border)')}
+              />
+            </div>
+
+            {/* Service */}
+            <div>
+              <label style={{
+                display: 'block', fontSize: '10px', fontWeight: 600,
+                letterSpacing: '0.1em', textTransform: 'uppercase',
+                color: 'var(--color-muted)', marginBottom: '8px',
+              }}>Ενδιαφέρομαι για</label>
               <div style={{ position: 'relative' }}>
-                <select style={{
-                  width: '100%', padding: '12px 16px',
-                  background: 'var(--color-dark-elevated)',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: '4px', color: 'var(--color-light)',
-                  fontSize: '14px', outline: 'none',
-                  appearance: 'none', WebkitAppearance: 'none',
-                  paddingRight: '40px', cursor: 'pointer',
-                }}>
+                <select
+                  defaultValue=""
+                  style={{
+                    ...inputStyle,
+                    appearance: 'none',
+                    paddingRight: '40px',
+                    cursor: 'pointer',
+                  }}
+                  onFocus={e => (e.currentTarget.style.borderColor = 'var(--color-red)')}
+                  onBlur={e => (e.currentTarget.style.borderColor = 'var(--color-border)')}>
                   <option value="" disabled>Επιλέξτε υπηρεσία</option>
-                  {['Δίπλωμα Β', 'Δίπλωμα Α', 'Δίπλωμα ΑΜ', 'Δίπλωμα Γ/Δ', 'Επέκταση διπλώματος', 'Ανανέωση διπλώματος', 'Μετεκπαίδευση', 'Διεκπεραιώσεις', 'Άλλο'].map(o => (
-                    <option key={o} value={o}>{o}</option>
+                  {services.map(s => (
+                    <option key={s} value={s}>{s}</option>
                   ))}
                 </select>
                 <div style={{
@@ -134,31 +147,29 @@ export default function Contact() {
                   color: 'rgba(247,247,248,0.4)',
                 }}>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
               </div>
+            </div>
 
+            {/* Message */}
             <div>
               <label style={{
                 display: 'block', fontSize: '10px', fontWeight: 600,
                 letterSpacing: '0.1em', textTransform: 'uppercase',
                 color: 'var(--color-muted)', marginBottom: '8px',
-              }}>
-                Μήνυμα (προαιρετικό)
-              </label>
-              <textarea placeholder="Πες μας κάτι..." rows={4} style={{
-                width: '100%', padding: '12px 16px',
-                background: 'var(--color-dark-elevated)',
-                border: '1px solid var(--color-border)',
-                borderRadius: '4px', color: 'var(--color-light)',
-                fontSize: '14px', outline: 'none', resize: 'vertical',
-                transition: 'border-color 200ms', fontFamily: 'inherit',
-              }}
-              onFocus={e => (e.currentTarget.style.borderColor = 'var(--color-red)')}
-              onBlur={e => (e.currentTarget.style.borderColor = 'var(--color-border)')} />
+              }}>Μήνυμα (προαιρετικό)</label>
+              <textarea
+                placeholder="Πες μας κάτι..."
+                rows={4}
+                style={{ ...inputStyle, resize: 'vertical', minHeight: '120px' }}
+                onFocus={e => (e.currentTarget.style.borderColor = 'var(--color-red)')}
+                onBlur={e => (e.currentTarget.style.borderColor = 'var(--color-border)')}
+              />
             </div>
 
+            {/* Submit */}
             <motion.button
               whileHover={{ y: -2, backgroundColor: 'var(--color-red-dark)' }}
               whileTap={{ scale: 0.97 }}
@@ -167,6 +178,7 @@ export default function Contact() {
                 padding: '14px 28px', borderRadius: '4px', border: 'none',
                 fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em',
                 textTransform: 'uppercase', cursor: 'pointer', width: '100%',
+                fontFamily: 'inherit',
               }}>
               Αποστολή
             </motion.button>
