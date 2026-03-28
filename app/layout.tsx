@@ -4,7 +4,7 @@ import './globals.css'
 export const metadata: Metadata = {
   metadataBase: new URL('https://dc26.eoflux.com'),
   title: {
-    default: 'DC Drive | Σχολή Οδηγών Δήμητρα Χριστοθανοπούλου Περιστέρι',
+    default: 'Σχολή Οδηγών | Δήμητρα Χριστοθανοπούλου Περιστέρι Αθήνα',
     template: '%s | DC Drive Σχολή Οδηγών Περιστέρι',
   },
   description: 'Σχολή οδηγών Δήμητρα Χριστοθανοπούλου στο Περιστέρι Αθήνας. Διπλώματα Β, Α, Γ, Δ. Εμπειρία από το 1979. Κλείστε ραντεβού σήμερα.',
