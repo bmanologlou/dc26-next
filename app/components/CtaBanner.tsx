@@ -48,7 +48,7 @@ export default function CtaBanner() {
             }}>
             Κλείσε ραντεβού →
           </motion.a>
-          <motion.a href="tel:+30"
+          <motion.a href="tel:+302105752780"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
             style={{

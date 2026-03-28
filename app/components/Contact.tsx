@@ -49,10 +49,10 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.1 }}
             style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {[
-              { label: 'Τηλέφωνο', value: '210 571 8756', href: 'tel:+302105718756' },
-              { label: 'Email', value: '[ΑΝΑΜΟΝΗ]', href: 'mailto:' },
-              { label: 'Διεύθυνση', value: '[ΑΝΑΜΟΝΗ]', href: '#' },
-              { label: 'Ωράριο', value: '[ΑΝΑΜΟΝΗ]', href: null },
+              { label: 'Τηλέφωνο', value: '210 575 2780', href: 'tel:+302105752780' },
+              { label: 'Email', value: 'd.christothanopoulou@gmail.com', href: 'mailto:d.christothanopoulou@gmail.com' },
+              { label: 'Διεύθυνση', value: 'Πεύκων 6, 12137 Περιστέρι', href: 'https://maps.app.goo.gl/LTvWA6NKzoF64mhk6' },
+              { label: 'Ωράριο', value: 'Δευτ–Παρ: 10:00–13:00 & 17:30–20:30', href: null },
             ].map(({ label, value, href }) => (
               <div key={label}>
                 <div style={{

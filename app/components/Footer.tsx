@@ -27,8 +27,8 @@ export default function Footer() {
               style={{ height: '40px', width: 'auto', filter: RED_FILTER, marginBottom: '16px', display: 'block' }} />
             <p style={{ fontSize: '13px', color: 'var(--color-muted)', lineHeight: 1.6, maxWidth: '260px' }}>
               Learn Smart, Drive Safe.<br />
-              Σχολή Οδηγών Δήμητρα Χριστοθανοπούλου<br />
-              Αθήνα · Από το 1979.
+              Γνώση, Εμπειρία, Εμπιστοσύνη.<br />
+              Περιστέρι · Από το 1979.
             </p>
           </div>
 
