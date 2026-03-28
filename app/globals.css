@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+
 :root {
   --color-dark:          #0f0f12;
   --color-dark-elevated: #1a1a20;
