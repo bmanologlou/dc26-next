@@ -6,69 +6,53 @@ export default function Preview() {
   return (
     <main style={{ background: '#0f0f12', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
 
-      <div style={{ flex: 1, padding: '80px 48px', color: 'rgba(247,247,248,0.2)', fontSize: '13px', textAlign: 'center' }}>
+      {/* Simulate page content */}
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(247,247,248,0.15)', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
         ↑ περιεχόμενο σελίδας
       </div>
 
-      <div style={{ padding: '48px', display: 'flex', flexDirection: 'column', gap: '48px' }}>
+      {/* Full width footer preview */}
+      <footer style={{
+        position: 'relative', overflow: 'hidden',
+        padding: 'clamp(40px, 5vw, 64px) clamp(24px, 5vw, 80px) clamp(24px, 4vw, 40px)',
+        borderTop: '1px solid rgba(255,255,255,0.07)',
+      }}>
+        <Suspense fallback={<div />}>
+          <GradientFooter />
+        </Suspense>
 
-        {/* Option A */}
-        <div>
-          <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>
-            A — radial bottom center, static
+        {/* Dummy footer content */}
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: '1440px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '40px', marginBottom: '48px' }}>
+            <div>
+              <div style={{ fontSize: '13px', color: 'rgba(247,247,248,0.45)', lineHeight: 1.6, maxWidth: '260px' }}>
+                Learn Smart, Drive Safe.<br />
+                Σχολή Οδηγών Δήμητρα Χριστοθανοπούλου<br />
+                Αθήνα · Από το 1979.
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: '60px' }}>
+              <div>
+                <div style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#c43010', marginBottom: '16px' }}>Διπλώματα</div>
+                {['Αυτοκίνητο', 'Μοτοσυκλέτα', 'Επαγγελματικά', 'Ανανεώσεις'].map(l => (
+                  <div key={l} style={{ fontSize: '13px', color: 'rgba(247,247,248,0.45)', marginBottom: '10px' }}>{l}</div>
+                ))}
+              </div>
+              <div>
+                <div style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#c43010', marginBottom: '16px' }}>Σχολή</div>
+                {['Πώς ξεκινάς', 'Γιατί εμείς', 'FAQ', 'Επικοινωνία'].map(l => (
+                  <div key={l} style={{ fontSize: '13px', color: 'rgba(247,247,248,0.45)', marginBottom: '10px' }}>{l}</div>
+                ))}
+              </div>
+            </div>
           </div>
-          <div style={{ height: '200px', borderRadius: '12px', background: '#0f0f12', position: 'relative', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
-            <Suspense fallback={<div style={{ background: '#0f0f12', inset: 0, position: 'absolute' }} />}>
-              <GradientFooter />
-            </Suspense>
-            <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,15,18,0.6)' }} />
-            <div style={{ position: 'absolute', bottom: '24px', left: '50%', transform: 'translateX(-50%)', color: 'rgba(255,255,255,0.5)', fontSize: '11px', whiteSpace: 'nowrap', zIndex: 1 }}>footer content</div>
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: '24px', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+            <div style={{ fontSize: '12px', color: 'rgba(247,247,248,0.22)' }}>© 2026 Σχολή Οδηγών Δήμητρα Χριστοθανοπούλου</div>
+            <div style={{ fontSize: '12px', color: 'rgba(247,247,248,0.22)' }}>Σχεδιασμός: Eternal Optimists</div>
           </div>
         </div>
+      </footer>
 
-        {/* Option B */}
-        <div>
-          <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>
-            B — animated pulse αργό (8s)
-          </div>
-          <div style={{ height: '200px', borderRadius: '12px', background: '#0f0f12', position: 'relative', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
-            <div style={{ position: 'absolute', bottom: '-60px', left: '50%', transform: 'translateX(-50%)', width: '600px', height: '200px', background: 'radial-gradient(ellipse at center, rgba(196,48,16,0.1) 0%, transparent 70%)', animation: 'pulseGlow 8s ease-in-out infinite' }} />
-            <div style={{ position: 'absolute', bottom: '24px', left: '50%', transform: 'translateX(-50%)', color: 'rgba(255,255,255,0.3)', fontSize: '11px', whiteSpace: 'nowrap' }}>footer content</div>
-          </div>
-        </div>
-
-        {/* Option C */}
-        <div>
-          <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>
-            C — two orbs αριστερά + δεξιά, animated
-          </div>
-          <div style={{ height: '200px', borderRadius: '12px', background: '#0f0f12', position: 'relative', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
-            <div style={{ position: 'absolute', bottom: '-80px', left: '-40px', width: '300px', height: '200px', background: 'radial-gradient(ellipse at center, rgba(196,48,16,0.1) 0%, transparent 70%)', animation: 'pulseGlow 10s ease-in-out infinite' }} />
-            <div style={{ position: 'absolute', bottom: '-80px', right: '-40px', width: '300px', height: '200px', background: 'radial-gradient(ellipse at center, rgba(255,66,18,0.06) 0%, transparent 70%)', animation: 'pulseGlow 10s ease-in-out infinite 5s' }} />
-            <div style={{ position: 'absolute', bottom: '24px', left: '50%', transform: 'translateX(-50%)', color: 'rgba(255,255,255,0.3)', fontSize: '11px', whiteSpace: 'nowrap' }}>footer content</div>
-          </div>
-        </div>
-
-        {/* Option D */}
-        <div>
-          <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>
-            D — horizontal glow line
-          </div>
-          <div style={{ height: '200px', borderRadius: '12px', background: '#0f0f12', position: 'relative', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
-            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '120px', background: 'linear-gradient(to top, rgba(196,48,16,0.08) 0%, transparent 100%)' }} />
-            <div style={{ position: 'absolute', bottom: '119px', left: '10%', right: '10%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,66,18,0.3), transparent)' }} />
-            <div style={{ position: 'absolute', bottom: '24px', left: '50%', transform: 'translateX(-50%)', color: 'rgba(255,255,255,0.3)', fontSize: '11px', whiteSpace: 'nowrap' }}>footer content</div>
-          </div>
-        </div>
-
-      </div>
-
-      <style>{`
-        @keyframes pulseGlow {
-          0%, 100% { opacity: 0.6; }
-          50% { opacity: 1; }
-        }
-      `}</style>
     </main>
   )
 }
