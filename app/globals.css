@@ -162,3 +162,16 @@ body {
   background: var(--color-red-dark);
   flex-shrink: 0;
 }
+
+/* Select option styling */
+select option {
+  background: #1a1a20;
+  color: #f7f7f8;
+}
+select option:disabled {
+  color: rgba(247,247,248,0.45);
+}
+select:focus {
+  outline: none;
+  border-color: var(--color-red) !important;
+}

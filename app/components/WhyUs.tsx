@@ -41,6 +41,31 @@ export default function WhyUs() {
           </h2>
         </motion.div>
 
+        {/* Photo slider placeholder */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          style={{
+            width: '100%', aspectRatio: '21/9',
+            minHeight: 'clamp(200px, 30vw, 400px)',
+            background: 'var(--color-dark-elevated)',
+            border: '1px solid var(--color-border)',
+            borderRadius: '10px', marginBottom: '64px',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            flexDirection: 'column', gap: '12px',
+            color: 'var(--color-subtle)',
+          }}>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span style={{ fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            Φωτογραφίες σχολής — σύντομα
+          </span>
+        </motion.div>
+
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',

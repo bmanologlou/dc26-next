@@ -133,9 +133,10 @@ export default function Contact() {
                     appearance: 'none',
                     paddingRight: '40px',
                     cursor: 'pointer',
+                    accentColor: '#8a1f00',
                   }}
 >
-                  <option value="" disabled>Επιλέξτε υπηρεσία</option>
+                  <option value="" disabled style={{ color: 'var(--color-muted)' }}>Επιλέξτε υπηρεσία</option>
                   {services.map(s => (
                     <option key={s} value={s}>{s}</option>
                   ))}
@@ -189,6 +190,11 @@ export default function Contact() {
         @media (max-width: 768px) {
           .contact-grid { grid-template-columns: 1fr !important; }
         }
+        select option[value=""] { color: rgba(247,247,248,0.4); }
+        select option { color: #f7f7f8; background: #1a1a20; }
+        select:focus { outline: 2px solid #c43010 !important; outline-offset: 0; border-color: #c43010 !important; }
+        select { color: rgba(247,247,248,0.45); }
+        select:not([value=""]) { color: #f7f7f8; }
       `}</style>
     </section>
   )
