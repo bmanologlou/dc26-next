@@ -1,15 +1,21 @@
 'use client'
+import { Suspense, lazy } from 'react'
+const GradientFooter = lazy(() => import('./GradientFooter'))
+
 
 const RED_FILTER = 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(1234%) hue-rotate(353deg) brightness(95%) contrast(110%)'
 
 export default function Footer() {
   const year = new Date().getFullYear()
   return (
-    <footer style={{
+    <footer style={{ position: 'relative', overflow: 'hidden',
       borderTop: '1px solid var(--color-border)',
       padding: 'clamp(40px, 5vw, 64px) clamp(24px, 5vw, 80px) clamp(24px, 4vw, 40px)',
     }}>
-      <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
+      <Suspense fallback={<div />}>
+        <GradientFooter />
+      </Suspense>
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: '1440px', margin: '0 auto' }}>
         <div style={{
           display: 'flex', justifyContent: 'space-between',
           alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap',
