@@ -8,6 +8,7 @@ export default function Footer() {
     <footer style={{
       borderTop: '1px solid var(--color-border)',
       padding: 'clamp(40px, 5vw, 64px) clamp(24px, 5vw, 80px) clamp(24px, 4vw, 40px)',
+      background: 'radial-gradient(ellipse at 30% 0%, rgba(196,48,16,0.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(255,66,18,0.04) 0%, transparent 50%)',
     }}>
       <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
         <div style={{
