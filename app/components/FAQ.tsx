@@ -35,7 +35,7 @@ export default function FAQ() {
         </motion.div>
 
         {/* Grid: accordion + side SVG */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '80px', alignItems: 'center' }} className="faq-grid">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 200px', gap: '64px', alignItems: 'center' }} className="faq-grid">
 
           {/* Accordion */}
           <div style={{ maxWidth: '800px', width: '100%' }}>
@@ -96,7 +96,7 @@ export default function FAQ() {
             <img
               src="/assets/FAQ_Side.svg"
               alt=""
-              style={{ width: '160px', opacity: 0.15, filter: 'invert(1)' }}
+              style={{ width: '200px', opacity: 0.15, filter: 'invert(1)', display: 'block' }}
             />
           </div>
 

@@ -127,7 +127,7 @@ export default function Contact() {
               }}>Ενδιαφέρομαι για</label>
               <div style={{ position: 'relative' }}>
                 <select
-                  defaultValue=""
+                  defaultValue="" onChange={e => { e.currentTarget.style.color = e.currentTarget.value ? "#f7f7f8" : "rgba(247,247,248,0.45)" }}
                   style={{
                     ...inputStyle,
                     appearance: 'none',
@@ -190,11 +190,9 @@ export default function Contact() {
         @media (max-width: 768px) {
           .contact-grid { grid-template-columns: 1fr !important; }
         }
-        select option[value=""] { color: rgba(247,247,248,0.4); }
-        select option { color: #f7f7f8; background: #1a1a20; }
-        select:focus { outline: 2px solid #c43010 !important; outline-offset: 0; border-color: #c43010 !important; }
-        select { color: rgba(247,247,248,0.45); }
-        select:not([value=""]) { color: #f7f7f8; }
+        select { color: rgba(247,247,248,0.45) !important; }
+        select option { color: #f7f7f8 !important; background: #1a1a20 !important; }
+        select:focus { outline: none !important; border-color: #c43010 !important; box-shadow: 0 0 0 2px rgba(196,48,16,0.3) !important; }
       `}</style>
     </section>
   )
