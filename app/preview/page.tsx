@@ -16,7 +16,10 @@ export default function Preview() {
             A — radial bottom center, static
           </div>
           <div style={{ height: '200px', borderRadius: '12px', background: '#0f0f12', position: 'relative', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
-            <div style={{ position: 'absolute', bottom: '-60px', left: '50%', transform: 'translateX(-50%)', width: '600px', height: '200px', background: 'radial-gradient(ellipse at center, rgba(196,48,16,0.12) 0%, transparent 70%)' }} />
+            {/* Large outer glow */}
+            <div style={{ position: 'absolute', bottom: '-60px', left: '50%', transform: 'translateX(-50%)', width: '600px', height: '200px', background: 'radial-gradient(ellipse at center, rgba(196,48,16,0.1) 0%, transparent 70%)', animation: 'pulseGlow 8s ease-in-out infinite' }} />
+            {/* Small inner core */}
+            <div style={{ position: 'absolute', bottom: '-30px', left: '50%', transform: 'translateX(-50%)', width: '200px', height: '120px', background: 'radial-gradient(ellipse at center, rgba(255,66,18,0.2) 0%, transparent 70%)', animation: 'pulseGlow 8s ease-in-out infinite 4s' }} />
             <div style={{ position: 'absolute', bottom: '24px', left: '50%', transform: 'translateX(-50%)', color: 'rgba(255,255,255,0.3)', fontSize: '11px', whiteSpace: 'nowrap' }}>footer content</div>
           </div>
         </div>
