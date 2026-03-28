@@ -47,6 +47,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://dc26.eoflux.com',
   },
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 }
 
 const jsonLd = {
