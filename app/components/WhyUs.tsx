@@ -66,7 +66,7 @@ export default function WhyUs() {
           </span>
         </motion.div>
 
-        <div style={{
+                <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
           gap: '0',
