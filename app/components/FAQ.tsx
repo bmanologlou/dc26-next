@@ -55,8 +55,8 @@ export default function FAQ() {
           <h2 className="t-h2">Συχνές ερωτήσεις</h2>
         </motion.div>
 
-        {/* Accordion */}
-        <div style={{ maxWidth: '800px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '80px', alignItems: 'center' }} className="faq-grid">
+        <div>
           {faqs.map((faq, i) => (
             <motion.div
               key={i}

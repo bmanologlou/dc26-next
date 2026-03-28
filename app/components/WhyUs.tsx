@@ -37,7 +37,7 @@ export default function WhyUs() {
             fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 800,
             letterSpacing: '-0.02em', color: 'var(--color-red)', lineHeight: 1.1,
           }}>
-            Γιατί DC Drive;
+            Η Δήμητρα &amp; η ομάδα της
           </h2>
         </motion.div>
 

@@ -9,6 +9,30 @@ const testimonials = [
   { text: 'Από τη πρώτη μέρα ένιωσα άνετα. Σπουδαία σχολή με πραγματικό ενδιαφέρον για τον μαθητή.', name: 'Δημήτρης Α.' },
 ]
 
+const QuoteIcon = () => (
+  <img src="/assets/dc-eisagogika.svg" alt="" style={{ height: '22px', width: 'auto', display: 'block', marginBottom: '20px', filter: 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(1234%) hue-rotate(353deg) brightness(95%) contrast(110%)', alignSelf: 'flex-start' }} />
+)
+
+const Card = ({ t }: { t: typeof testimonials[0] }) => (
+  <div style={{
+    border: '1px solid var(--color-border)',
+    borderRadius: '10px', padding: 'clamp(24px, 3vw, 36px)',
+    display: 'flex', flexDirection: 'column',
+    minHeight: '220px',
+  }}>
+    <QuoteIcon />
+    <p style={{
+      fontSize: 'clamp(14px, 1.5vw, 17px)', color: 'var(--color-light)',
+      lineHeight: 1.75, flex: 1, fontWeight: 500,
+    }}>
+      {t.text}
+    </p>
+    <div style={{ fontSize: '13px', fontWeight: 700, color: '#ff4212', marginTop: '20px' }}>
+      {t.name}
+    </div>
+  </div>
+)
+
 export default function Testimonials() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
@@ -27,6 +51,9 @@ export default function Testimonials() {
     return () => clearInterval(t)
   }, [current])
 
+  // Desktop: show 2 at a time
+  const next1 = (current + 1) % testimonials.length
+
   return (
     <section ref={ref} style={{
       padding: 'clamp(64px, 8vw, 120px) clamp(24px, 5vw, 80px)',
@@ -39,27 +66,11 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{
-            display: 'flex', alignItems: 'flex-end',
-            justifyContent: 'space-between', marginBottom: '48px', gap: '24px',
-          }}>
+          style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '48px', gap: '24px' }}>
           <div>
-            <div style={{
-              fontSize: '10px', fontWeight: 600, letterSpacing: '0.16em',
-              textTransform: 'uppercase', color: 'var(--color-red-dark)',
-              marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px',
-            }}>
-              <span style={{ width: '24px', height: '1px', background: 'var(--color-red-dark)', display: 'inline-block' }} />
-              Μαθητές
-            </div>
-            <h2 style={{
-              fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 800,
-              letterSpacing: '-0.02em', color: 'var(--color-red)', lineHeight: 1.1,
-            }}>
-              Τι λένε οι μαθητές μας
-            </h2>
+            <div className="t-eyebrow-line" style={{ marginBottom: '12px' }}>Μαθητές</div>
+            <h2 className="t-h2">Τι λένε οι μαθητές μας</h2>
           </div>
-
           {/* Desktop arrows */}
           <div className="desktop-arrows" style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
             {[{ fn: prev, label: '←' }, { fn: next, label: '→' }].map(({ fn, label }) => (
@@ -79,8 +90,25 @@ export default function Testimonials() {
           </div>
         </motion.div>
 
-        {/* Slider */}
-        <div style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* Desktop: 2 cards */}
+        <div className="testimonials-desktop" style={{ overflow: 'hidden' }}>
+          <AnimatePresence mode="wait" custom={dir}>
+            <motion.div
+              key={current}
+              custom={dir}
+              initial={{ opacity: 0, x: dir * 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: dir * -40 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              <Card t={testimonials[current]} />
+              <Card t={testimonials[next1]} />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Mobile: 1 card swipeable */}
+        <div className="testimonials-mobile" style={{ overflow: 'hidden', display: 'none' }}>
           <AnimatePresence mode="wait" custom={dir}>
             <motion.div
               key={current}
@@ -96,33 +124,13 @@ export default function Testimonials() {
                 if (info.offset.x < -50) next()
                 else if (info.offset.x > 50) prev()
               }}
-              style={{
-                border: '1px solid var(--color-border)',
-                borderRadius: '10px', padding: 'clamp(28px, 4vw, 48px)',
-                userSelect: 'none', cursor: 'grab',
-                minHeight: '280px',
-                display: 'flex', flexDirection: 'column',
-              }}>
-
-              {/* Quote icon placeholder — replace with custom SVG */}
-              <img src="/assets/dc-eisagogika.svg" alt="" style={{ height: '22px', width: 'auto', display: 'block', marginBottom: '20px', filter: 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(1234%) hue-rotate(353deg) brightness(95%) contrast(110%)', alignSelf: 'flex-start' }} />
-
-              <p style={{
-                fontSize: 'clamp(16px, 2vw, 22px)', color: 'var(--color-light)',
-                lineHeight: 1.7, marginBottom: '32px', fontWeight: 500,
-                maxWidth: '800px', flex: 1,
-              }}>
-                {testimonials[current].text}
-              </p>
-
-              <div style={{ fontSize: '14px', fontWeight: 700, color: '#ff4212' }}>
-                {testimonials[current].name}
-              </div>
+              style={{ cursor: 'grab', userSelect: 'none' }}>
+              <Card t={testimonials[current]} />
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Dots — outside slider, always visible */}
+        {/* Dots */}
         <div style={{ display: 'flex', gap: '6px', justifyContent: 'center', marginTop: '24px' }}>
           {testimonials.map((_, i) => (
             <button key={i} onClick={() => go(i)} style={{
@@ -138,6 +146,8 @@ export default function Testimonials() {
       <style>{`
         @media (max-width: 768px) {
           .desktop-arrows { display: none !important; }
+          .testimonials-desktop { display: none !important; }
+          .testimonials-mobile { display: block !important; }
         }
       `}</style>
     </section>
