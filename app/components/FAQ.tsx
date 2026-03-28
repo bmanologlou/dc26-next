@@ -96,7 +96,7 @@ export default function FAQ() {
             <img
               src="/assets/FAQ_Side.svg"
               alt=""
-              style={{ width: '200px', opacity: 0.15, filter: 'invert(1)', display: 'block' }}
+              style={{ width: '200px', opacity: 0.12, filter: 'brightness(0) invert(1)', display: 'block' }}
             />
           </div>
 

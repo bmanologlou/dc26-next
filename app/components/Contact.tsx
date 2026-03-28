@@ -190,9 +190,10 @@ export default function Contact() {
         @media (max-width: 768px) {
           .contact-grid { grid-template-columns: 1fr !important; }
         }
-        select { color: rgba(247,247,248,0.45) !important; }
+        select { color: rgba(247,247,248,0.45) !important; accent-color: #c43010; }
         select option { color: #f7f7f8 !important; background: #1a1a20 !important; }
-        select:focus { outline: none !important; border-color: #c43010 !important; box-shadow: 0 0 0 2px rgba(196,48,16,0.3) !important; }
+        select option:checked, select option:hover { background: #c43010 !important; color: #f7f7f8 !important; }
+        select:focus { outline: none !important; border-color: #c43010 !important; box-shadow: 0 0 0 2px rgba(196,48,16,0.25) !important; }
       `}</style>
     </section>
   )
