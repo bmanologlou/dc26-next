@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 const photos = [
   { src: '/assets/Slider_01.webp', pos: 'center' },
   { src: '/assets/Slider_02.webp', pos: 'center' },
-  { src: '/assets/Slider_03.webp', pos: 'center 20%' },
-  { src: '/assets/Slider_04.webp', pos: 'center 20%' },
+  { src: '/assets/Slider_03.webp', pos: 'center 70%' },
+  { src: '/assets/Slider_04.webp', pos: 'center 75%' },
   { src: '/assets/Slider_05.webp', pos: 'center' },
-  { src: '/assets/Slider_06.webp', pos: 'top' },
+  { src: '/assets/Slider_06.webp', pos: '20% top' },
 ]
 
 export default function PhotoSlider() {
