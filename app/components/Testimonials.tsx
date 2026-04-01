@@ -104,9 +104,9 @@ export default function Testimonials() {
             <motion.div
               key={current}
               custom={dir}
-              initial={{ x: dir * 100 }}
+              initial={{ x: dir > 0 ? '110%' : '-110%' }}
               animate={{ x: 0 }}
-              exit={{ x: dir * -100 }}
+              exit={{ x: dir > 0 ? '-110%' : '110%' }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
               <Card t={testimonials[current]} />
@@ -121,9 +121,9 @@ export default function Testimonials() {
             <motion.div
               key={current}
               custom={dir}
-              initial={{ x: dir * 100 }}
+              initial={{ x: dir > 0 ? '110%' : '-110%' }}
               animate={{ x: 0 }}
-              exit={{ x: dir * -100 }}
+              exit={{ x: dir > 0 ? '-110%' : '110%' }}
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}

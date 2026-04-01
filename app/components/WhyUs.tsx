@@ -1,5 +1,6 @@
 'use client'
 import { useRef } from 'react'
+import PhotoSlider from './PhotoSlider'
 import { motion, useInView } from 'framer-motion'
 
 const features = [
