@@ -32,13 +32,13 @@ export default function PhotoSlider() {
       background: 'var(--color-dark-elevated)',
       overflow: 'hidden',
     }}>
-      <AnimatePresence initial={false} custom={dir}>
+      <AnimatePresence initial={false}>
         <motion.div
           key={current}
           custom={dir}
-          initial={(d: number) => ({ x: d > 0 ? '100%' : '-100%' })}
+          initial={{ x: dir > 0 ? '100%' : '-100%' }}
           animate={{ x: 0 }}
-          exit={(d: number) => ({ x: d > 0 ? '-100%' : '100%' })}
+          exit={{ x: dir > 0 ? '-100%' : '100%' }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}

@@ -105,10 +105,9 @@ export default function Testimonials() {
               <AnimatePresence initial={false} custom={dir}>
                 <motion.div
                   key={current}
-                  custom={dir}
-                  initial={(d: number) => ({ x: d > 0 ? '110%' : '-110%' })}
+                        initial={{ x: dir > 0 ? '110%' : '-110%' }}
                   animate={{ x: 0 }}
-                  exit={(d: number) => ({ x: d > 0 ? '-110%' : '110%' })}
+                  exit={{ x: dir > 0 ? '-110%' : '110%' }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   style={{ position: 'absolute', inset: 0 }}>
                   <Card t={testimonials[next1]} />
@@ -119,10 +118,9 @@ export default function Testimonials() {
               <AnimatePresence initial={false} custom={dir}>
                 <motion.div
                   key={`${current}-2`}
-                  custom={dir}
-                  initial={(d: number) => ({ x: d > 0 ? '110%' : '-110%' })}
+                        initial={{ x: dir > 0 ? '110%' : '-110%' }}
                   animate={{ x: 0 }}
-                  exit={(d: number) => ({ x: d > 0 ? '-110%' : '110%' })}
+                  exit={{ x: dir > 0 ? '-110%' : '110%' }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.06 }}
                   style={{ position: 'absolute', inset: 0 }}>
                   <Card t={testimonials[(current + 2) % testimonials.length]} />
@@ -137,8 +135,7 @@ export default function Testimonials() {
           <AnimatePresence mode="wait" custom={dir}>
             <motion.div
               key={current}
-              custom={dir}
-              initial={{ x: dir > 0 ? '110%' : '-110%' }}
+                initial={{ x: dir > 0 ? '110%' : '-110%' }}
               animate={{ x: 0 }}
               exit={{ x: dir > 0 ? '-110%' : '110%' }}
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
