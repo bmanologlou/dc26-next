@@ -98,21 +98,38 @@ export default function Testimonials() {
           </div>
         </motion.div>
 
-        {/* Desktop: 2 cards */}
-        <div className="testimonials-desktop" style={{ overflow: 'hidden' }}>
-          <AnimatePresence mode="wait" custom={dir}>
-            <motion.div
-              key={current}
-              custom={dir}
-              initial={{ x: dir > 0 ? '110%' : '-110%' }}
-              animate={{ x: 0 }}
-              exit={{ x: dir > 0 ? '-110%' : '110%' }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-              <Card t={testimonials[current]} />
-              <Card t={testimonials[next1]} />
-            </motion.div>
-          </AnimatePresence>
+        {/* Desktop: conveyor belt — 2 visible, slides one at a time */}
+        <div className="testimonials-desktop" style={{ overflow: 'hidden', position: 'relative' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+            <div style={{ overflow: 'hidden', position: 'relative', minHeight: '280px' }}>
+              <AnimatePresence initial={false} custom={dir}>
+                <motion.div
+                  key={current}
+                  custom={dir}
+                  initial={(d: number) => ({ x: d > 0 ? '110%' : '-110%' })}
+                  animate={{ x: 0 }}
+                  exit={(d: number) => ({ x: d > 0 ? '-110%' : '110%' })}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ position: 'absolute', inset: 0 }}>
+                  <Card t={testimonials[next1]} />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            <div style={{ overflow: 'hidden', position: 'relative', minHeight: '280px' }}>
+              <AnimatePresence initial={false} custom={dir}>
+                <motion.div
+                  key={`${current}-2`}
+                  custom={dir}
+                  initial={(d: number) => ({ x: d > 0 ? '110%' : '-110%' })}
+                  animate={{ x: 0 }}
+                  exit={(d: number) => ({ x: d > 0 ? '-110%' : '110%' })}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.06 }}
+                  style={{ position: 'absolute', inset: 0 }}>
+                  <Card t={testimonials[(current + 2) % testimonials.length]} />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
         </div>
 
         {/* Mobile: 1 card swipeable */}

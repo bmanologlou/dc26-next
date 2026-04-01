@@ -26,21 +26,20 @@ export default function PhotoSlider() {
 
   return (
     <div style={{
-      borderRadius: '10px', overflow: 'hidden',
+      borderRadius: '10px',
       marginBottom: '56px', position: 'relative',
       aspectRatio: '21/9', minHeight: '280px',
       background: 'var(--color-dark-elevated)',
-      cursor: 'grab',
+      overflow: 'hidden',
     }}>
-      <AnimatePresence mode="wait" custom={dir}>
-        <motion.img
+      <AnimatePresence initial={false} custom={dir}>
+        <motion.div
           key={current}
-          src={photos[current]}
-          alt={`Σχολή Οδηγών DC Drive ${current + 1}`}
-          initial={{ x: dir > 0 ? '100%' : '-100%' }}
+          custom={dir}
+          initial={(d: number) => ({ x: d > 0 ? '100%' : '-100%' })}
           animate={{ x: 0 }}
-          exit={{ x: dir > 0 ? '-100%' : '100%' }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          exit={(d: number) => ({ x: d > 0 ? '-100%' : '100%' })}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.1}
@@ -51,54 +50,50 @@ export default function PhotoSlider() {
           style={{
             position: 'absolute', inset: 0,
             width: '100%', height: '100%',
-            objectFit: 'cover', objectPosition: 'center',
-            userSelect: 'none',
-          }}
-        />
+          }}>
+          <img
+            src={photos[current]}
+            alt={`DC Drive ${current + 1}`}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+          />
+        </motion.div>
       </AnimatePresence>
 
       {/* Dots */}
       <div style={{
         position: 'absolute', bottom: '16px', left: '50%',
         transform: 'translateX(-50%)',
-        display: 'flex', gap: '6px', zIndex: 2,
+        display: 'flex', gap: '6px', zIndex: 10,
       }}>
         {photos.map((_, i) => (
           <button key={i} onClick={() => go(i, i > current ? 1 : -1)} style={{
             width: i === current ? '16px' : '5px', height: '5px',
             borderRadius: '3px', border: 'none', cursor: 'pointer',
-            background: i === current ? '#ff4212' : 'rgba(255,255,255,0.4)',
+            background: i === current ? '#ff4212' : 'rgba(255,255,255,0.5)',
             transition: 'all 300ms ease', padding: 0,
           }} />
         ))}
       </div>
 
       {/* Desktop arrows */}
-      <div className="slider-arrows" style={{
-        position: 'absolute', top: '50%', transform: 'translateY(-50%)',
-        width: '100%', display: 'flex', justifyContent: 'space-between',
-        padding: '0 16px', boxSizing: 'border-box', zIndex: 2,
-        pointerEvents: 'none',
-      }}>
-        {[{ fn: prev, label: '←' }, { fn: next, label: '→' }].map(({ fn, label }) => (
-          <button key={label} onClick={fn} style={{
-            width: '36px', height: '36px', borderRadius: '50%',
-            border: '1px solid rgba(255,255,255,0.2)',
-            background: 'rgba(15,15,18,0.6)', cursor: 'pointer',
-            color: '#f7f7f8', fontSize: '14px',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            pointerEvents: 'all', transition: 'background 200ms',
-          }}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,66,18,0.7)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(15,15,18,0.6)')}>
-            {label}
-          </button>
-        ))}
-      </div>
+      <button className="slider-arrow" onClick={prev} style={{
+        position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)',
+        zIndex: 10, width: '36px', height: '36px', borderRadius: '50%',
+        border: '1px solid rgba(255,255,255,0.2)',
+        background: 'rgba(15,15,18,0.6)', cursor: 'pointer',
+        color: '#f7f7f8', fontSize: '14px',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+      }}>←</button>
+      <button className="slider-arrow" onClick={next} style={{
+        position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)',
+        zIndex: 10, width: '36px', height: '36px', borderRadius: '50%',
+        border: '1px solid rgba(255,255,255,0.2)',
+        background: 'rgba(15,15,18,0.6)', cursor: 'pointer',
+        color: '#f7f7f8', fontSize: '14px',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+      }}>→</button>
 
-      <style>{`
-        @media (max-width: 768px) { .slider-arrows { display: none !important; } }
-      `}</style>
+      <style>{`@media (max-width: 768px) { .slider-arrow { display: none !important; } }`}</style>
     </div>
   )
 }
