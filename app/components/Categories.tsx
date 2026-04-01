@@ -78,11 +78,13 @@ export default function Categories() {
                 {c.desc}
               </p>
               <div style={{ display: 'flex', gap: '16px', marginBottom: '20px', flexWrap: 'wrap' }}>
-                <span style={{ fontSize: '10px', color: 'var(--color-subtle)', letterSpacing: '0.06em' }}>
-                  👤 {c.age}
+                <span style={{ fontSize: '11px', color: 'rgba(247,247,248,0.55)', letterSpacing: '0.04em', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>
+                  {c.age}
                 </span>
-                <span style={{ fontSize: '10px', color: 'var(--color-subtle)', letterSpacing: '0.06em' }}>
-                  📚 {c.lessons}
+                <span style={{ fontSize: '11px', color: 'rgba(247,247,248,0.55)', letterSpacing: '0.04em', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2C6.48 2 2 6.48 2 12"/><path d="M12 2C17.52 2 22 6.48 22 12"/></svg>
+                  {c.lessons}
                 </span>
               </div>
               <motion.div whileHover={{ x: 4 }} transition={{ duration: 0.2 }}
