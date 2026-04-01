@@ -51,19 +51,13 @@ export default function Dimitra() {
           </div>
 
           <h2 style={{
-            fontSize: 'clamp(24px, 3vw, 38px)', fontWeight: 800,
-            letterSpacing: '-0.02em', color: 'var(--color-red)',
-            lineHeight: 1.1, marginBottom: '4px',
+            fontSize: 'clamp(28px, 3.5vw, 44px)', fontWeight: 800,
+            letterSpacing: '-0.02em', color: 'var(--color-light)',
+            lineHeight: 1.15, marginBottom: '24px',
           }}>
-            Δήμητρα Χριστοθανοπούλου
+            Δίπλα σου<br />
+            <span style={{ color: 'var(--color-red)' }}>σε κάθε βήμα.</span>
           </h2>
-          <p style={{
-            fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em',
-            textTransform: 'uppercase', color: 'var(--color-red-dark)',
-            marginBottom: '28px',
-          }}>
-            Ιδιοκτήτρια Σχολής &amp; Εκπαιδεύτρια
-          </p>
 
           <p style={{
             fontSize: 'clamp(14px, 1.6vw, 16px)', color: 'var(--color-muted)',
@@ -92,13 +86,13 @@ export default function Dimitra() {
             paddingTop: '24px', borderTop: '1px solid var(--color-border)',
           }}>
             <div style={{ fontSize: '16px', fontWeight: 700, color: 'var(--color-light)' }}>
-              Dimitra Christothanopoulou
+              Δήμητρα Χριστοθανοπούλου
             </div>
             <div style={{
               fontSize: '11px', color: 'var(--color-red-dark)',
               letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 500,
             }}>
-              Ιδιοκτήτρια & Εκπαιδεύτρια, DC Drive
+              Ιδιοκτήτρια Σχολής &amp; Εκπαιδεύτρια
             </div>
           </div>
         </motion.div>
