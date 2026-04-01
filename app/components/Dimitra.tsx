@@ -51,13 +51,19 @@ export default function Dimitra() {
           </div>
 
           <h2 style={{
-            fontSize: 'clamp(28px, 3.5vw, 44px)', fontWeight: 800,
-            letterSpacing: '-0.02em', color: 'var(--color-light)',
-            lineHeight: 1.15, marginBottom: '24px',
+            fontSize: 'clamp(24px, 3vw, 38px)', fontWeight: 800,
+            letterSpacing: '-0.02em', color: 'var(--color-red)',
+            lineHeight: 1.1, marginBottom: '4px',
           }}>
-            Δίπλα σου<br />
-            <span style={{ color: 'var(--color-red)' }}>σε κάθε βήμα.</span>
+            Δήμητρα Χριστοθανοπούλου
           </h2>
+          <p style={{
+            fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em',
+            textTransform: 'uppercase', color: 'var(--color-red-dark)',
+            marginBottom: '28px',
+          }}>
+            Ιδιοκτήτρια Σχολής &amp; Εκπαιδεύτρια
+          </p>
 
           <p style={{
             fontSize: 'clamp(14px, 1.6vw, 16px)', color: 'var(--color-muted)',

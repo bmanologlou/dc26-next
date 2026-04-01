@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 const photos = [
   { src: '/assets/Slider_01.webp', pos: 'center' },
   { src: '/assets/Slider_02.webp', pos: 'center' },
-  { src: '/assets/Slider_03.webp', pos: 'center 30%' },
-  { src: '/assets/Slider_04.webp', pos: 'center 30%' },
+  { src: '/assets/Slider_03.webp', pos: 'center 20%' },
+  { src: '/assets/Slider_04.webp', pos: 'center 20%' },
   { src: '/assets/Slider_05.webp', pos: 'center' },
   { src: '/assets/Slider_06.webp', pos: 'top' },
 ]
@@ -28,15 +28,17 @@ export default function PhotoSlider() {
     <div className="photo-slider-wrap" style={{
       borderRadius: '10px',
       marginBottom: '56px', position: 'relative',
-      aspectRatio: '21/9', minHeight: '280px',
+      aspectRatio: '16/7', minHeight: '300px',
       background: 'var(--color-dark-elevated)',
       overflow: 'hidden',
+      width: '100%',
+      boxSizing: 'border-box',
     }}>
       <AnimatePresence initial={false}>
         <motion.div
           key={current}
           initial={{ x: dir > 0 ? '100%' : '-100%' }}
-          animate={{ x: 0 }}
+          animate={{ x: '0%' }}
           exit={{ x: dir > 0 ? '-100%' : '100%' }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           drag="x"
@@ -92,7 +94,7 @@ export default function PhotoSlider() {
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>→</button>
 
-      <style>{`@media (max-width: 768px) { .slider-arrow { display: none !important; } .photo-slider-wrap { aspect-ratio: 4/3 !important; min-height: 320px !important; } }`}</style>
+      <style>{`@media (max-width: 768px) { .slider-arrow { display: none !important; } .photo-slider-wrap { aspect-ratio: 4/3 !important; min-height: 340px !important; max-width: 100% !important; } }`}</style>
     </div>
   )
 }
