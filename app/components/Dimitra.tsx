@@ -24,32 +24,15 @@ export default function Dimitra() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           style={{
             aspectRatio: '4/5',
-            background: 'var(--color-dark-elevated)',
-            border: '1px solid var(--color-border)',
             borderRadius: '12px',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            position: 'relative', overflow: 'hidden',
+            overflow: 'hidden',
+            position: 'relative',
           }}>
-          {/* Placeholder */}
-          <div style={{
-            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px',
-            color: 'var(--color-subtle)',
-          }}>
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-            <span style={{ fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-              Φωτογραφία σύντομα
-            </span>
-          </div>
-
-          {/* Decorative accent */}
-          <div style={{
-            position: 'absolute', bottom: 0, left: 0, right: 0,
-            height: '40%',
-            background: 'linear-gradient(to top, rgba(196,48,16,0.08), transparent)',
-          }} />
+          <img
+            src="/assets/DC_Profile.webp"
+            alt="Δήμητρα Χριστοθανοπούλου"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
+          />
         </motion.div>
 
         {/* Text */}

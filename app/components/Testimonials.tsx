@@ -108,7 +108,7 @@ export default function Testimonials() {
                         initial={{ x: dir > 0 ? '110%' : '-110%' }}
                   animate={{ x: 0 }}
                   exit={{ x: dir > 0 ? '-110%' : '110%' }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
                   style={{ position: 'absolute', inset: 0 }}>
                   <Card t={testimonials[next1]} />
                 </motion.div>
@@ -121,7 +121,7 @@ export default function Testimonials() {
                         initial={{ x: dir > 0 ? '110%' : '-110%' }}
                   animate={{ x: 0 }}
                   exit={{ x: dir > 0 ? '-110%' : '110%' }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.06 }}
+                  transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1], delay: 0.08 }}
                   style={{ position: 'absolute', inset: 0 }}>
                   <Card t={testimonials[(current + 2) % testimonials.length]} />
                 </motion.div>
