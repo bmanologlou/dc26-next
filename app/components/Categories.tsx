@@ -2,10 +2,10 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
-const main = [
-  { cat: 'Κατηγορία Β', title: 'Αυτοκίνητο', desc: 'Η πιο δημοφιλής επιλογή για νέους οδηγούς. Ξεκίνα σήμερα.' },
-  { cat: 'Κατηγορία Α', title: 'Μοτοσυκλέτα', desc: 'Για κάθε επίπεδο — από ΑΜ μέχρι Α πλήρης.' },
-  { cat: 'Κατηγορία Γ/Δ', title: 'Επαγγελματικά', desc: 'Φορτηγά, λεωφορεία και ΠΕΙ για επαγγελματική αναβάθμιση.' },
+const main: { cat: string; title: string; desc: string; age: string; lessons: string; href: string }[] = [
+  { cat: 'Κατηγορία Β', title: 'Αυτοκίνητο', desc: 'Η πιο δημοφιλής επιλογή για νέους οδηγούς. Ξεκίνα σήμερα.', age: 'Από 17 ετών', lessons: '21 θεωρητικά · 15 πρακτικά', href: '/diploma/b' },
+  { cat: 'Κατηγορίες Α, Α1, Α2, ΑΜ', title: 'Μοτοσυκλέτα', desc: 'Για κάθε επίπεδο — από μοτοποδήλατο ΑΜ μέχρι Α πλήρης.', age: 'Από 16 ετών', lessons: '32 θεωρητικά · 14 πρακτικά', href: '/diploma/moto' },
+  { cat: 'Κατηγορίες Γ, Δ, Ε', title: 'Επαγγελματικά', desc: 'Φορτηγά, λεωφορεία και ΠΕΙ για επαγγελματική αναβάθμιση.', age: 'Από 21 ετών', lessons: '16 θεωρητικά · 15 πρακτικά', href: '/diploma/epaggelmatika' },
 ]
 
 const extra = [
@@ -74,9 +74,17 @@ export default function Categories() {
               <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-light)', marginBottom: '10px' }}>
                 {c.title}
               </h3>
-              <p style={{ fontSize: '13px', color: 'var(--color-muted)', lineHeight: 1.65 }}>
+              <p style={{ fontSize: '13px', color: 'var(--color-muted)', lineHeight: 1.65, marginBottom: '16px' }}>
                 {c.desc}
               </p>
+              <div style={{ display: 'flex', gap: '16px', marginBottom: '20px', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '10px', color: 'var(--color-subtle)', letterSpacing: '0.06em' }}>
+                  👤 {c.age}
+                </span>
+                <span style={{ fontSize: '10px', color: 'var(--color-subtle)', letterSpacing: '0.06em' }}>
+                  📚 {c.lessons}
+                </span>
+              </div>
               <motion.div whileHover={{ x: 4 }} transition={{ duration: 0.2 }}
                 style={{ marginTop: '20px', fontSize: '11px', fontWeight: 700, color: 'var(--color-red)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                 Μάθε περισσότερα →
