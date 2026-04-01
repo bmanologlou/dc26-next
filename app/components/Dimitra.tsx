@@ -31,7 +31,7 @@ export default function Dimitra() {
           <img
             src="/assets/DC_Profile.webp"
             alt="Δήμητρα Χριστοθανοπούλου"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'bottom', display: 'block' }}
           />
         </motion.div>
 

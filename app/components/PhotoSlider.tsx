@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const photos = [
-  '/assets/Slider_01.webp',
-  '/assets/Slider_02.webp',
-  '/assets/Slider_03.webp',
-  '/assets/Slider_04.webp',
-  '/assets/Slider_05.webp',
-  '/assets/Slider_06.webp',
+  { src: '/assets/Slider_01.webp', pos: 'center' },
+  { src: '/assets/Slider_02.webp', pos: 'center' },
+  { src: '/assets/Slider_03.webp', pos: 'center 30%' },
+  { src: '/assets/Slider_04.webp', pos: 'center 30%' },
+  { src: '/assets/Slider_05.webp', pos: 'center' },
+  { src: '/assets/Slider_06.webp', pos: 'top' },
 ]
 
 export default function PhotoSlider() {
@@ -25,7 +25,7 @@ export default function PhotoSlider() {
   }, [current])
 
   return (
-    <div style={{
+    <div className="photo-slider-wrap" style={{
       borderRadius: '10px',
       marginBottom: '56px', position: 'relative',
       aspectRatio: '21/9', minHeight: '280px',
@@ -35,7 +35,6 @@ export default function PhotoSlider() {
       <AnimatePresence initial={false}>
         <motion.div
           key={current}
-          custom={dir}
           initial={{ x: dir > 0 ? '100%' : '-100%' }}
           animate={{ x: 0 }}
           exit={{ x: dir > 0 ? '-100%' : '100%' }}
@@ -52,9 +51,9 @@ export default function PhotoSlider() {
             width: '100%', height: '100%',
           }}>
           <img
-            src={photos[current]}
+            src={photos[current].src}
             alt={`DC Drive ${current + 1}`}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: photos[current].pos, display: 'block' }}
           />
         </motion.div>
       </AnimatePresence>
@@ -93,7 +92,7 @@ export default function PhotoSlider() {
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>→</button>
 
-      <style>{`@media (max-width: 768px) { .slider-arrow { display: none !important; } }`}</style>
+      <style>{`@media (max-width: 768px) { .slider-arrow { display: none !important; } .photo-slider-wrap { aspect-ratio: 4/3 !important; min-height: 320px !important; } }`}</style>
     </div>
   )
 }

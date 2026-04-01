@@ -38,7 +38,8 @@ export default function WhyUs() {
             fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 800,
             letterSpacing: '-0.02em', color: 'var(--color-red)', lineHeight: 1.1,
           }}>
-            Η Δήμητρα &amp; η ομάδα της
+            <span className="why-title-desktop">Η Δήμητρα &amp; η ομάδα της</span>
+            <span className="why-title-mobile">Η Δήμητρα<br />&amp; η ομάδα της</span>
           </h2>
         </motion.div>
 
@@ -82,6 +83,11 @@ export default function WhyUs() {
         </div>
       </div>
       <style>{`
+        .why-title-mobile { display: none; }
+        @media (max-width: 768px) {
+          .why-title-desktop { display: none; }
+          .why-title-mobile { display: inline; }
+        }
         @media (max-width: 768px) {
           .why-item { border-right: none !important; padding: 24px 0 !important; border-bottom: 1px solid var(--color-border); }
           .why-item:last-child { border-bottom: none !important; }
