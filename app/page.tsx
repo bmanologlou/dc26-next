@@ -12,11 +12,6 @@ import Contact from './components/Contact'
 import FAQ from './components/FAQ'
 import Footer from './components/Footer'
 
-export const metadata = {
-  title: 'DC Drive — Σχολή Οδηγών Αθήνα',
-  description: 'Σχολή οδηγών DC Drive στην Αθήνα. Κατηγορίες Β, Α, Γ, Δ. Υψηλό ποσοστό επιτυχίας, εμπειρία από το 1979.',
-}
-
 export default function Home() {
   return (
     <main>
