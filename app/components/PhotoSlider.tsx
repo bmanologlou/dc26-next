@@ -8,7 +8,7 @@ const photos = [
   { src: '/assets/Slider_03.webp', pos: 'center 70%' },
   { src: '/assets/Slider_04.webp', pos: 'center 75%' },
   { src: '/assets/Slider_05.webp', pos: 'center' },
-  { src: '/assets/Slider_06b.webp', pos: 'center' },
+  { src: '/assets/Slider_06b.webp', pos: 'center 30%' },
 ]
 
 export default function PhotoSlider() {
