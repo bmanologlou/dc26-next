@@ -55,7 +55,7 @@ export default function Testimonials() {
   const prev = () => go(current === 0 ? testimonials.length - 1 : current - 1, -1)
 
   useEffect(() => {
-    const t = setInterval(next, 5000)
+    const t = setInterval(next, 7000)
     return () => clearInterval(t)
   }, [current])
 
@@ -104,10 +104,10 @@ export default function Testimonials() {
             <motion.div
               key={current}
               custom={dir}
-              initial={{ opacity: 0, x: dir * 40 }}
+              initial={{ opacity: 0, x: dir * 80 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: dir * -40 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              exit={{ opacity: 0, x: dir * -80 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
               <Card t={testimonials[current]} />
               <Card t={testimonials[next1]} />
@@ -121,10 +121,10 @@ export default function Testimonials() {
             <motion.div
               key={current}
               custom={dir}
-              initial={{ opacity: 0, x: dir * 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: dir * -50 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ x: dir * 100 }}
+              animate={{ x: 0 }}
+              exit={{ x: dir * -100 }}
+              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.1}
