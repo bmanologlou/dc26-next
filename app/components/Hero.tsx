@@ -24,7 +24,8 @@ export default function Hero() {
         <GradientBg />
       </Suspense>
 {/* Content */}
-      <div style={{ position: 'relative', zIndex: 2, maxWidth: '760px' }}>
+      <div style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: '1440px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '760px' }}>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
