@@ -9,9 +9,9 @@ const main: { cat: string; title: string; desc: string; age?: string; lessons?: 
 ]
 
 const extra = [
-  { icon: '↑', title: 'Επεκτάσεις', desc: 'Αναβάθμισε το δίπλωμά σου με νέες κατηγορίες.' },
-  { icon: '⟳', title: 'Μετεκπαίδευση', desc: 'Επαναληπτικά μαθήματα με ταχυτήτες ή αυτόματο εκπαιδευτικό όχημα, για οδηγούς που θέλουν να νιώσουν ξανά σιγουριά.' },
-  { icon: '✦', title: 'Διεκπεραιώσεις', desc: 'Ανανέωση, αντίγραφο και αντικατάσταση άδειας, προσθήκη κωδικού 121, ειδική άδεια ταξί και ψηφιακός ταχογράφος.' },
+  { title: 'Επεκτάσεις', desc: 'Έχεις ήδη δίπλωμα και θέλεις να προσθέσεις νέα κατηγορία; Η εμπειρία μας κάνει τη διαδικασία πιο εύκολη και το αποτέλεσμα σίγουρο.' },
+  { title: 'Μετεκπαίδευση', desc: 'Επαναληπτικά μαθήματα με ταχυτήτες ή αυτόματο εκπαιδευτικό όχημα, για οδηγούς που θέλουν να νιώσουν ξανά σιγουριά.' },
+  { title: 'Διεκπεραιώσεις', desc: 'Ανανέωση, αντίγραφο και αντικατάσταση άδειας, προσθήκη κωδικού 121, ειδική άδεια ταξί και ψηφιακός ταχογράφος.' },
 ]
 
 export default function Categories() {
@@ -118,9 +118,33 @@ export default function Categories() {
                 borderRadius: '10px', padding: 'clamp(20px, 2.5vw, 32px)',
                 display: 'flex', flexDirection: 'column', gap: '12px',
               }}>
-              <span style={{ fontSize: '20px', color: 'var(--color-red-dark)', lineHeight: 1 }}>
-                {e.icon}
-              </span>
+              <div style={{ color: 'var(--color-red-dark)' }}>
+                {e.title === 'Επεκτάσεις' && (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/>
+                    <path d="M7 7h.01"/>
+                  </svg>
+                )}
+                {e.title === 'Μετεκπαίδευση' && (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <circle cx="12" cy="12" r="3"/>
+                    <line x1="12" y1="2" x2="12" y2="9"/>
+                    <line x1="12" y1="15" x2="12" y2="22"/>
+                    <line x1="2" y1="12" x2="9" y2="12"/>
+                    <line x1="15" y1="12" x2="22" y2="12"/>
+                  </svg>
+                )}
+                {e.title === 'Διεκπεραιώσεις' && (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10 9 9 9 8 9"/>
+                  </svg>
+                )}
+              </div>
               <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-light)' }}>
                 {e.title}
               </div>
