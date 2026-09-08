@@ -74,7 +74,7 @@ export default function Categories() {
               <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-light)', marginBottom: '10px' }}>
                 {c.title}
               </h3>
-              <p style={{ fontSize: '13px', color: 'var(--color-muted)', lineHeight: 1.65, marginBottom: '16px', flex: 1 }}>
+              <p style={{ fontSize: '13px', color: 'var(--color-muted)', lineHeight: 1.65, marginBottom: '16px', minHeight: '44px' }}>
                 {c.desc}
               </p>
               <div style={{ minHeight: '28px', marginBottom: '20px', display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
