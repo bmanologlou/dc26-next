@@ -3,7 +3,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const main: { cat: string; title: string; desc: string; age: string; lessons: string; href: string }[] = [
-  { cat: 'Κατηγορία Β', title: 'Αυτοκίνητο', desc: 'Η πιο δημοφιλής επιλογή για νέους οδηγούς. Ξεκίνα σήμερα.', age: 'Από 17 ετών', lessons: '21 θεωρητικά · 15 πρακτικά', href: '/diploma/b' },
+  { cat: 'Κατηγορία Β', title: 'Αυτοκίνητο', desc: 'Η πιο δημοφιλής επιλογή για νέους οδηγούς. Ξεκίνα σήμερα.', age: 'Από 17 ετών', lessons: '21 θεωρητικά · 25 πρακτικά', href: '/diploma/b' },
   { cat: 'Κατηγορίες Α, Α1, Α2, ΑΜ', title: 'Μοτοσυκλέτα', desc: 'Για κάθε επίπεδο — από μοτοποδήλατο ΑΜ μέχρι Α πλήρης.', age: 'Από 16 ετών', lessons: '32 θεωρητικά · 14 πρακτικά', href: '/diploma/moto' },
   { cat: 'Κατηγορίες Γ, Δ, Ε', title: 'Επαγγελματικά', desc: 'Φορτηγά, λεωφορεία και ΠΕΙ για επαγγελματική αναβάθμιση.', age: 'Από 21 ετών', lessons: '16 θεωρητικά · 15 πρακτικά', href: '/diploma/epaggelmatika' },
 ]
