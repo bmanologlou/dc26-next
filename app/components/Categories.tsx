@@ -121,8 +121,9 @@ export default function Categories() {
               <div style={{ color: 'var(--color-red-dark)' }}>
                 {e.title === 'Επεκτάσεις' && (
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/>
-                    <path d="M7 7h.01"/>
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                    <polyline points="2 17 12 22 22 17"/>
+                    <polyline points="2 12 12 17 22 12"/>
                   </svg>
                 )}
                 {e.title === 'Μετεκπαίδευση' && (
