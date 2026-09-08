@@ -111,6 +111,7 @@ export default function Hero() {
             Δες τις κατηγορίες
           </motion.a>
         </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}
