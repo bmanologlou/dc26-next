@@ -156,6 +156,11 @@ export default function Categories() {
           ))}
         </div>
       </div>
+    <style>{`
+        @media (max-width: 768px) {
+          .extra-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   )
 }
