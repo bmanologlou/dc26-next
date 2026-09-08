@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const photos = [
   { src: '/assets/Slider_01.webp', pos: 'center' },
-  { src: '/assets/Slider_02.webp', pos: 'center 65%' },
+  { src: '/assets/Slider_02.webp', pos: 'center 80%' },
   { src: '/assets/Slider_03.webp', pos: 'center 70%' },
   { src: '/assets/Slider_04.webp', pos: 'center 75%' },
 ]
