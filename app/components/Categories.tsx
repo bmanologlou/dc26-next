@@ -10,9 +10,8 @@ const main: { cat: string; title: string; desc: string; age?: string; lessons?: 
 
 const extra = [
   { icon: '↑', title: 'Επεκτάσεις', desc: 'Αναβάθμισε το δίπλωμά σου με νέες κατηγορίες.' },
-  { icon: '↻', title: 'Ανανεώσεις', desc: 'Ανανέωση & επανέκδοση άδειας εύκολα και γρήγορα.' },
-  { icon: '⟳', title: 'Μετεκπαίδευση', desc: 'Επαναληπτικά μαθήματα για οδηγούς που θέλουν να νιώσουν ξανά σιγουριά.' },
-  { icon: '✦', title: 'Διεκπεραιώσεις', desc: 'Άδεια ταξί, ψηφιακός ταχογράφος, αντικατάσταση άδειας.' },
+  { icon: '⟳', title: 'Μετεκπαίδευση', desc: 'Επαναληπτικά μαθήματα με ταχυτήτες ή αυτόματο εκπαιδευτικό όχημα, για οδηγούς που θέλουν να νιώσουν ξανά σιγουριά.' },
+  { icon: '✦', title: 'Διεκπεραιώσεις', desc: 'Ανανέωση, αντίγραφο και αντικατάσταση άδειας, προσθήκη κωδικού 121, ειδική άδεια ταξί και ψηφιακός ταχογράφος.' },
 ]
 
 export default function Categories() {
@@ -102,12 +101,12 @@ export default function Categories() {
           ))}
         </div>
 
-        {/* Extra services — smaller cards */}
+        {/* Extra services */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: '8px',
-        }}>
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '12px',
+        }} className="extra-grid">
           {extra.map((e, i) => (
             <motion.div key={i}
               initial={{ opacity: 0, y: 16 }}
@@ -116,22 +115,17 @@ export default function Categories() {
               whileHover={{ y: -2, borderColor: 'rgba(255,255,255,0.12)' }}
               style={{
                 border: '1px solid var(--color-border)',
-                borderRadius: '8px', padding: '18px 20px', cursor: 'pointer',
-                display: 'flex', gap: '14px', alignItems: 'flex-start',
+                borderRadius: '10px', padding: 'clamp(20px, 2.5vw, 32px)',
+                display: 'flex', flexDirection: 'column', gap: '12px',
               }}>
-              <span style={{
-                fontSize: '16px', color: 'var(--color-red-dark)',
-                flexShrink: 0, marginTop: '2px', lineHeight: 1,
-              }}>
+              <span style={{ fontSize: '20px', color: 'var(--color-red-dark)', lineHeight: 1 }}>
                 {e.icon}
               </span>
-              <div>
-                <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-light)', marginBottom: '4px' }}>
-                  {e.title}
-                </div>
-                <div style={{ fontSize: '11px', color: 'var(--color-muted)', lineHeight: 1.6 }}>
-                  {e.desc}
-                </div>
+              <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-light)' }}>
+                {e.title}
+              </div>
+              <div style={{ fontSize: '13px', color: 'var(--color-muted)', lineHeight: 1.65, flex: 1 }}>
+                {e.desc}
               </div>
             </motion.div>
           ))}
