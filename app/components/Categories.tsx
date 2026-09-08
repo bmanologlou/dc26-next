@@ -2,10 +2,10 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
-const main: { cat: string; title: string; desc: string; age: string; lessons: string; href: string }[] = [
-  { cat: 'Κατηγορία Β', title: 'Αυτοκίνητο', desc: 'Η πιο δημοφιλής επιλογή για νέους οδηγούς. Ξεκίνα σήμερα.', age: 'Από 17 ετών', lessons: '21 θεωρητικά · 25 πρακτικά', href: '/diploma/b' },
-  { cat: 'Κατηγορίες Α, Α1, Α2, ΑΜ', title: 'Μοτοσυκλέτα', desc: 'Για κάθε επίπεδο — από μοτοποδήλατο ΑΜ μέχρι Α πλήρης.', age: 'Από 16 ετών', lessons: '32 θεωρητικά · 14 πρακτικά', href: '/diploma/moto' },
-  { cat: 'Κατηγορίες Γ, Δ, Ε', title: 'Επαγγελματικά', desc: 'Φορτηγά, λεωφορεία και ΠΕΙ για επαγγελματική αναβάθμιση.', age: 'Από 21 ετών', lessons: '16 θεωρητικά · 15 πρακτικά', href: '/diploma/epaggelmatika' },
+const main: { cat: string; title: string; desc: string; age?: string; lessons?: string; note?: string }[] = [
+  { cat: 'Κατηγορία Β', title: 'Αυτοκίνητο', desc: 'Η πιο δημοφιλής επιλογή για νέους οδηγούς. Ξεκίνα σήμερα.', age: 'Από 17 ετών', lessons: '21 θεωρητικά · 25 πρακτικά' },
+  { cat: 'Κατηγορίες Α, Α1, Α2, ΑΜ', title: 'Μοτοσυκλέτα', desc: 'Για κάθε επίπεδο, από μοτοποδήλατο ΑΜ μέχρι Α πλήρης. Διαθέσιμες επεκτάσεις: ΑΜ→Α1, Α1→Α2, Α2→Α.', age: 'Από 16 ετών' },
+  { cat: 'Κατηγορίες Γ, Δ, Ε', title: 'Επαγγελματικά', desc: 'Φορτηγό, λεωφορείο, νταλίκα και ΠΕΙ για επαγγελματική αναβάθμιση.', note: 'Κατοχή Β κατηγορίας' },
 ]
 
 const extra = [
@@ -77,15 +77,25 @@ export default function Categories() {
               <p style={{ fontSize: '13px', color: 'var(--color-muted)', lineHeight: 1.65, marginBottom: '16px' }}>
                 {c.desc}
               </p>
-              <div style={{ display: 'flex', gap: '16px', marginBottom: '20px', flexWrap: 'wrap' }}>
-                <span style={{ fontSize: '11px', color: 'rgba(247,247,248,0.55)', letterSpacing: '0.04em', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>
-                  {c.age}
-                </span>
-                <span style={{ fontSize: '11px', color: 'rgba(247,247,248,0.55)', letterSpacing: '0.04em', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2C6.48 2 2 6.48 2 12"/><path d="M12 2C17.52 2 22 6.48 22 12"/></svg>
-                  {c.lessons}
-                </span>
+              <div style={{ minHeight: '28px', marginBottom: '20px', display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
+                {c.age && (
+                  <span style={{ fontSize: '11px', color: 'rgba(247,247,248,0.55)', letterSpacing: '0.04em', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>
+                    {c.age}
+                  </span>
+                )}
+                {c.lessons && (
+                  <span style={{ fontSize: '11px', color: 'rgba(247,247,248,0.55)', letterSpacing: '0.04em', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2C6.48 2 2 6.48 2 12"/><path d="M12 2C17.52 2 22 6.48 22 12"/></svg>
+                    {c.lessons}
+                  </span>
+                )}
+                {c.note && (
+                  <span style={{ fontSize: '11px', color: 'rgba(247,247,248,0.55)', letterSpacing: '0.04em', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>
+                    {c.note}
+                  </span>
+                )}
               </div>
               <motion.div whileHover={{ x: 4 }} transition={{ duration: 0.2 }}
                 style={{ marginTop: '20px', fontSize: '11px', fontWeight: 700, color: 'var(--color-red)', display: 'flex', alignItems: 'center', gap: '6px' }}>
