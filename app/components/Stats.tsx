@@ -6,7 +6,7 @@ const stats = [
   { num: '1979', label: 'Από το έτος' },
   { num: '85%', label: 'Επιτυχία' },
   { num: '2k+', label: 'Απόφοιτοι' },
-  { num: '6', label: 'Κατηγορίες' },
+  { num: '5', label: 'Κατηγορίες' },
 ]
 
 export default function Stats() {
