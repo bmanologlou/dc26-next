@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion'
 
 const main: { cat: string; title: string; desc: string; age?: string; lessons?: string; note?: string }[] = [
   { cat: 'Κατηγορία Β', title: 'Αυτοκίνητο', desc: 'Η πιο δημοφιλής επιλογή για νέους οδηγούς. Ξεκίνα σήμερα.', age: 'Από 17 ετών', lessons: '21 θεωρητικά · 25 πρακτικά' },
-  { cat: 'Κατηγορίες Α, Α1, Α2, ΑΜ', title: 'Μοτοσυκλέτα', desc: 'Για κάθε επίπεδο, από μοτοποδήλατο ΑΜ μέχρι Α πλήρης. Διαθέσιμες επεκτάσεις: ΑΜ→Α1, Α1→Α2, Α2→Α.', age: 'Από 16 ετών' },
+  { cat: 'Κατηγορίες Α, Α1, Α2, ΑΜ', title: 'Μοτοσυκλέτα', desc: 'Για κάθε επίπεδο, από μοτοποδήλατο ΑΜ μέχρι Α πλήρης. Διαθέσιμες επεκτάσεις κατηγορίας: ΑΜ→Α1, Α1→Α2 και Α2→Α.', age: 'Από 16 ετών' },
   { cat: 'Κατηγορίες Γ, Δ, Ε', title: 'Επαγγελματικά', desc: 'Φορτηγό, λεωφορείο, νταλίκα και ΠΕΙ για επαγγελματική αναβάθμιση.', note: 'Κατοχή Β κατηγορίας' },
 ]
 
@@ -74,7 +74,7 @@ export default function Categories() {
               <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-light)', marginBottom: '10px' }}>
                 {c.title}
               </h3>
-              <p style={{ fontSize: '13px', color: 'var(--color-muted)', lineHeight: 1.65, marginBottom: '16px' }}>
+              <p style={{ fontSize: '13px', color: 'var(--color-muted)', lineHeight: 1.65, marginBottom: '16px', flex: 1 }}>
                 {c.desc}
               </p>
               <div style={{ minHeight: '28px', marginBottom: '20px', display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -97,10 +97,7 @@ export default function Categories() {
                   </span>
                 )}
               </div>
-              <motion.div whileHover={{ x: 4 }} transition={{ duration: 0.2 }}
-                style={{ marginTop: '20px', fontSize: '11px', fontWeight: 700, color: 'var(--color-red)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                Μάθε περισσότερα →
-              </motion.div>
+
             </motion.div>
           ))}
         </div>
